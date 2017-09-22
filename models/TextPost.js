@@ -9,10 +9,7 @@ module.exports = function(sequelize, DataTypes) {
       }
     }
 
-    },
-  {
-    timestamps: false
-  });
+    });
   TextPost.associate = function(models)
   {
     //adds association with User model via unique email.
