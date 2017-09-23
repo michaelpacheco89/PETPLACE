@@ -1,5 +1,12 @@
 module.exports = function(sequelize, DataTypes) {
   var User = sequelize.define("User", {
+    name:{
+      type: DataTypes.STRING,
+      allowNull:false,
+      validate:{
+        isAlphanumeric:true
+      }
+    },
     username: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -31,12 +38,11 @@ module.exports = function(sequelize, DataTypes) {
   {
     timestamps: false
   });
-  User.associate = function(models)
-  {
+  User.associate = function(models){
     //adds association with Pawfile table
      User.hasMany(models.Pawfile, {
        onDelete: "cascade"
     });
-  }
+  };
   return User;
 };
