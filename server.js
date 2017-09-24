@@ -1,7 +1,6 @@
 // DEPENDENCIES
 var express = require("express");
 var bodyParser = require("body-parser");
-var routes = require("./routes/pictures-api-routes");
 var socket = require("socket.io");
 //var cookieParser = require('cookie-parser');
 
