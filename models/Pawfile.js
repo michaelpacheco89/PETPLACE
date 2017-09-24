@@ -53,7 +53,8 @@ module.exports = function(sequelize, DataTypes) {
   {
     //adds association with User model via unique email.
      Pawfile.belongsTo(models.User, {
-       {foreignKey: "UserEmail", targetKey: "email"}
+       foreignKey: "UserEmail",
+       targetKey: "email"
     });
 
     //adds association to Pictures table

@@ -1,5 +1,6 @@
 var db = require("../models");
 
+
 module.exports = function(app) {
   //find ALL user's pawfiles
   app.get("/api/pawfiles", function(req,res){
@@ -9,7 +10,6 @@ module.exports = function(app) {
       res.json(data);
     });
   });
-};
 
 //find ONE pawfile
 app.get("/api/pawfiles/:id",function(req,res){
@@ -50,3 +50,5 @@ app.put("/api/pawfiles",function(req,res){
     res.json(data);
   });
 });
+
+};

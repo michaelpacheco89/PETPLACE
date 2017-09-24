@@ -1,9 +1,9 @@
 // DEPENDENCIES
 var express = require("express");
 var bodyParser = require("body-parser");
-var routes = require("./routes/routes");
+var routes = require("./routes/pictures-api-routes");
 var socket = require("socket.io");
-var cookieParser = require('cookie-parser');
+//var cookieParser = require('cookie-parser');
 
 // Setting up Express app
 // =====================================
@@ -19,7 +19,7 @@ var db = require("./models");
 
 // Sets up the Express app to handle data parsing
 // app.use(methodOverride('_method'));
-app.use(cookieParser());
+//app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
@@ -30,7 +30,8 @@ app.use(express.static("public"));
 
 // Routes
 // =============================================================
-
+//app.use("/", routes);
+require("./routes/pictures-api-routes")(app);
     // PUT ROUTES IN HERE
 
 // Syncing our sequelize models and then starting our Express app
