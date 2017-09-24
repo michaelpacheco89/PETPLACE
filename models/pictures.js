@@ -9,7 +9,15 @@ module.exports = function(sequelize, DataTypes) {
                 len: [1]
             }
         },
-        index: DataTypes.INTEGER
+
+        isProfile: {
+          type: DataTypes.BOOLEAN,
+          allowNull: false,
+          defaultValue: false
+        }
+      },
+    {
+      timestamps: false
     });
 
     Pictures.associate = function(models) {
