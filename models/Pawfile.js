@@ -40,28 +40,31 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER,
       allowNull: true,
       validate: {
-        isNumeric: true,
+        // isNumeric: true,
         len: [1]
       }
     }
 
-    },
-  {
-    timestamps: false
-  });
-  Pawfile.associate = function(models)
-  {
+    });
+  Pawfile.associate = function(models){
     //adds association with User model via unique email.
      Pawfile.belongsTo(models.User, {
-       foreignKey: "UserEmail",
-       targetKey: "email"
+       as:"Owner",
+       foreignKey:{
+         name:"OwnerId"
+       },
+       onDelete: "cascade"
     });
 
     //adds association to Pictures table
     Pawfile.hasMany(models.Pictures, {
+      as:"OwnedPics",
+      foreignKey:{
+        name:"PicOwnerId"
+      },
       onDelete: "cascade"
     });
 
-  }
+  };
   return Pawfile;
 };

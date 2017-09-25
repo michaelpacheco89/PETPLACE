@@ -20,7 +20,7 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-          isAlphanumeric: true,
+          // isAlphanumeric: true,
           len: [1]
         }
       },
@@ -41,7 +41,11 @@ module.exports = function(sequelize, DataTypes) {
   User.associate = function(models){
     //adds association with Pawfile table
      User.hasMany(models.Pawfile, {
-       onDelete: "cascade"
+       as: "OwnedPawfiles",
+       onDelete: "cascade",
+       foreignKey: {
+         name: "OwnerId"
+       }
     });
   };
   return User;

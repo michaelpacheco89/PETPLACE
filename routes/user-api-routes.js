@@ -5,7 +5,12 @@ module.exports = function(app) {
 
 //API route for getting ALL users
   app.get("/api/users", function(req, res) {
-    db.User.findAll({}).then(function(data) {
+    db.User.findAll({
+      include: [{
+        model: db.Pawfile,
+        as: "OwnerId"
+      }]
+    }).then(function(data) {
       res.json(data);
     });
   });
@@ -21,7 +26,13 @@ app.get("/api/users/:id", function(req, res) {
   } else {
     query.id = req.params.id;
   }
-  db.User.findOne({where: query}).then(function(data) {
+  db.User.findOne({
+    where: query,
+    include: [{
+      model: db.Pawfile,
+      as: "OwnerId"
+    }]
+  }).then(function(data) {
     res.json(data);
   });
 });
@@ -46,6 +57,7 @@ app.post("/api/users/login", function(req, res) {
 app.post("/api/users", function(req, res) {
     db.User.create({
         name: req.body.name,
+        username: req.body.username,
         email: req.body.email,
         password: bcrypt.hashSync(req.body.password)
     }).then(function(dbUser) {
