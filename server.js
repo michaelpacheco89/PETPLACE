@@ -32,7 +32,7 @@ app.use(express.static("public"));
 //app.use("/", routes);
     // PUT ROUTES IN HERE
 require("./routes/user-api-routes")(app);
-require("./routes/pictures-api-routes")(app);
+require("./routes/posts-api-routes")(app);
 require("./routes/pawfile-api-routes")(app);
 
 
