@@ -10,6 +10,7 @@ module.exports = function(app) {
         as: "OwnedPics"
       }]
     }).then(function(data){
+      console.log(data);
       res.json(data);
     });
   });
@@ -21,19 +22,22 @@ app.get("/api/pawfiles/:id",function(req,res){
       id:req.params.id
     }
   }).then(function(data){
+    clearCookie(pawfileId);
+    res.cookie(pawfileId, data.pawfileId);
     res.json(data);
   });
 });
 
 // post route for creating NEW Pawfile
-app.post("/api/pawfile", function(req,res){
+app.post("/api/pawfile/", function(req,res){
   console.log(req.body);
   db.Pawfile.create({
     name: req.body.name,
     species: req.body.species,
     breed: req.body.breed,
     sex: req.body.sex,
-    age: req.body.age
+    age: req.body.age,
+    UserId: req.cookies.userId
   }).then(function(data){
     res.json(data);
   });

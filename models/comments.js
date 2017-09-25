@@ -13,9 +13,11 @@ module.exports = function(sequelize, DataTypes) {
 
     Comments.associate = function(models) {
         Comments.belongsTo(models.Post, {
-            onDelete: "cascade",
-            allowNull: true,
-            primaryKey: true
+            foreignKey: {
+                allowNull: true,
+                primaryKey: true
+            },
+            onDelete: "cascade"
         });
     };
     return Comments;
