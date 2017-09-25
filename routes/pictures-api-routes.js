@@ -48,11 +48,11 @@ module.exports = function(app) {
 
       //creates filepath to be saved in database
       var filePath = `./${req.file.path}`;
-
+      console.log(req.params.pawfileId);
       //saves filepath to database.
       db.Pictures.create({
           title: filePath,
-          pawfileId: req.params.pawfileId
+          PawfileId: req.params.pawfileId
       }).then(dbPicture => {
         console.log("added to DB");
         res.json(dbPicture);
@@ -67,7 +67,7 @@ module.exports = function(app) {
     //this route is intended to be used to load profile Pic
     db.Pictures.findOne({
       where: {
-        pawfileId: req.params.pawfileId,
+        PawfileId: req.params.pawfileId,
         isProfile: true
       }
     }).then(results => {
@@ -75,17 +75,56 @@ module.exports = function(app) {
     });
   });
 
-  // app.put("api/changeProfilePic/:pawfileId/:pic", (req, res) =>{
-  //   db.Pictures.update({
-  //       isProfile: false
-  //     },
-  //     {
-  //       where: {
-  //         pawfileId: req.params.pawfileId,
-  //         isProfile: true
-  //       }
-  //     }
-  //   })
-  // });
+  //route to update profile picture
+  app.post("api/changeProfilePic/:pawfileId/:pic", (req, res) =>{
+    //first it updates the current profile picture
+    //to make it not a prof pic.
+    db.Pictures.update({
+        isProfile: false
+      },
+      {
+        where: {
+          PawfileId: req.params.pawfileId,
+          isProfile: true
+        }
+      }).then( results => {
+        //then makes the new pic the prof pic
+      db.Pictures.update({
+        isProfile: true
+      },
+      {
+        where: {
+          title: req.params.pic
+        }
+      }).then( data => {
+        res.json(data);
+      });
+    });
+  });
 
+  //get route for getting most recent 25 pics from database.
+  //NOTE: number can be changed based on what makes sense.
+  app.get("api/feedPics", (req, res) => {
+    db.Pictures.findAll({
+      order: [
+        sequelize.fn(sequelize.col(id), 'DESC')
+      ],
+      limit: 25
+    }).then(results => {
+      res.json(results);
+    });
+  });
+
+  //route to delete picture. I'm including pawfileId
+  //and pic to make it more difficult for nefarious deletions.
+  app.delete("api/deletePic/:pawfileId/:pic", (req, res) => {
+    db.Pictures.destroy({
+      where: {
+        PawfileId: req.params.pawfileId,
+        title: req.params.pic
+      }
+    }).then(results => {
+      res.json(results);
+    });
+  });
 };
