@@ -65,7 +65,7 @@ module.exports = function(app) {
     //looks for a picture with a matching pawfileId
     //and where isProfile is true.
     //this route is intended to be used to load profile Pic
-    db.Pictures.findOne({
+    db.Post.findOne({
       where: {
         PawfileId: req.params.pawfileId,
         isProfile: true
@@ -79,7 +79,7 @@ module.exports = function(app) {
   app.post("api/changeProfilePic/:pawfileId/:pic", (req, res) =>{
     //first it updates the current profile picture
     //to make it not a prof pic.
-    db.Pictures.update({
+    db.Post.update({
         isProfile: false
       },
       {
@@ -89,7 +89,7 @@ module.exports = function(app) {
         }
       }).then( results => {
         //then makes the new pic the prof pic
-      db.Pictures.update({
+      db.Post.update({
         isProfile: true
       },
       {
@@ -105,7 +105,7 @@ module.exports = function(app) {
   //get route for getting most recent 25 pics from database.
   //NOTE: number can be changed based on what makes sense.
   app.get("api/feedPics", (req, res) => {
-    db.Pictures.findAll({
+    db.Post.findAll({
       order: [
         sequelize.fn(sequelize.col(id), 'DESC')
       ],
@@ -118,7 +118,7 @@ module.exports = function(app) {
   //route to delete picture. I'm including pawfileId
   //and pic to make it more difficult for nefarious deletions.
   app.delete("api/deletePic/:pawfileId/:pic", (req, res) => {
-    db.Pictures.destroy({
+    db.Post.destroy({
       where: {
         PawfileId: req.params.pawfileId,
         title: req.params.pic

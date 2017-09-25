@@ -49,26 +49,15 @@ module.exports = function(sequelize, DataTypes) {
   Pawfile.associate = function(models){
     //adds association with User model via unique email.
      Pawfile.belongsTo(models.User, {
-       as:"Owner",
        foreignKey:{
-         name:"OwnerId",
-         allowNull: true
+         allowNull: false
        },
        onDelete: "cascade"
     });
 
-    Pawfile.belongsTo(models.Shelter, {
-      foreignKey: {
-        allowNull: true
-      },
-      onDelete: "cascade"
-    });
-
     //adds association to Pictures table
-    Pawfile.hasMany(models.Pictures, {
-      as:"OwnedPics",
+    Pawfile.hasMany(models.Post, {
       foreignKey:{
-        name:"PicOwnerId",
         allowNull: true
       },
       onDelete: "cascade"

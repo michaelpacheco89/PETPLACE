@@ -44,6 +44,7 @@ app.post("/api/users/login", function(req, res) {
     if (data == null) {
       res.json({username: true});
     } else {
+      res.cookie("userId", data.id);
       res.json({
         password: bcrypt.compareSync(req.body.password, data.password),
         id: data.id

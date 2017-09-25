@@ -19,7 +19,7 @@ module.exports = function(sequelize, DataTypes) {
     }
 
     });
-  TextPost.associate = function(models)
+  Post.associate = function(models)
   {
     //adds association with User model via unique email.
      Post.belongsTo(models.Pawfile, {

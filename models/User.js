@@ -38,16 +38,20 @@ module.exports = function(sequelize, DataTypes) {
           // isAlphanumeric: true,
           len: [1]
         }
-      }
+      },
+    isShelter: {
+      type: DataTypes.BOOLEAN,
+      allowNull: true,
+      defaultValue: false
+    }
     });
 
   User.associate = function(models){
     //adds association with Pawfile table
      User.hasMany(models.Pawfile, {
-       as: "OwnedPawfiles",
        onDelete: "cascade",
        foreignKey: {
-         name: "OwnerId"
+         allowNull: false
        }
     });
   };
