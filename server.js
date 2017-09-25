@@ -7,7 +7,7 @@ var socket = require("socket.io");
 // Setting up Express app
 // =====================================
 var app = express();
-var PORT = process.env.PORT || 8083;
+var PORT = process.env.PORT || 8000;
 
 // Sets up server for sockets
 var server = require('http').Server(app);
@@ -30,15 +30,17 @@ app.use(express.static("public"));
 // Routes
 // =============================================================
 //app.use("/", routes);
-require("./routes/pictures-api-routes")(app);
     // PUT ROUTES IN HERE
+require("./routes/user-api-routes")(app);
+require("./routes/pictures-api-routes")(app);
+
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync({force:true}).then(function() {
-    /*  app.listen(PORT, function() {
-            console.log("App listening on PORT " + PORT);
-          });*/
+db.sequelize.sync({force:true}).then(function() {   //{force:true} goes inside sync()
+        // app.listen(PORT, function() {
+        //     console.log("App listening on PORT " + PORT);
+        //   });
         server.listen(PORT, function() {
             console.log('Server listening on PORT: ', PORT);
         });
