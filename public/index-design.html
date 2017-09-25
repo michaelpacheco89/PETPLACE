@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Sigmar+One" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="assets/style.css">
+    <title>Document</title>
+</head>
+<body>
+<!-- HEADER -->
+<div class="parallax-container">
+    <div class="parallax"><img src="assets/images/tracks.jpg"></div>
+    <h2 class="header">SCATCHAT<i class="material-icons">pets</i></h2>
+</div>
+
+<!-- BODY -->
+<div class="section white">
+    <div class="row container">
+
+<!-- NEW POST INPUT BOX -->
+        <div class="post row z-depth-5">
+            <form action="#" class="col s12">
+                <h4> New Post </h4>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="first_name" type="text" class="validate">
+                        <label for="message">What's Up?</label>
+                    </div>
+                </div>
+
+                <div class="file-field input-field">
+                    <div class="btn">
+                        <span><i class="material-icons">add</i></span>
+                        <input type="file">
+                    </div>
+                    
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text">
+                    </div>
+                </div>
+            </form>
+        </div>
+<!-- POST CARDS -->
+        <div class="row">
+            <div class="col s12">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="assets/images/cat1.jpg">
+                        <span class="card-title">Card Title</span>
+                        <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+                    </div>
+                    <div class="card-content">
+                        <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+<!-- END POST CARD -->
+
+    </div>
+</div>
+<!-- PARALLAX AND FOOTER -->
+<div class="parallax-container">
+    <div class="parallax"><img src="assets/images/tracks.jpg"></div>
+</div>
+
+<footer class="page-footer">
+    <div class="container">
+        <div class="row"> CONTENT TBD
+        </div>
+    </div>
+
+    <div class="footer-copyright">
+        <div class="container">
+        © 2017 Copyright ScatChat
+        </div>
+    </div>
+</footer>
+<!-- END PARALLAX AND FOOTER -->
+</body>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+        $('.parallax').parallax();
+        });
+    </script>
+</html>

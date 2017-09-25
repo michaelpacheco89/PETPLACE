@@ -1,0 +1,33 @@
+.header {
+
+    font-family: 'Sigmar One', cursive;
+    text-align: center;
+    padding-top: 150px;
+    font-size: 100px;
+    color: #9047f7;
+}
+.page-footer,
+.footer-copyright {
+    color: black;
+    background-color: #9047f7;
+}
+
+.post {
+    color: black;
+    background-color: #bb96f2;
+
+}
+
+.parallax {
+    opacity: .4;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
