@@ -33,6 +33,7 @@ app.use(express.static("public"));
     // PUT ROUTES IN HERE
 require("./routes/user-api-routes")(app);
 require("./routes/pictures-api-routes")(app);
+require("./routes/pawfile-api-routes")(app);
 
 
 // Syncing our sequelize models and then starting our Express app
