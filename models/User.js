@@ -2,29 +2,26 @@ module.exports = function(sequelize, DataTypes) {
   var User = sequelize.define("User", {
     name:{
       type: DataTypes.STRING,
-      allowNull:false,
+      allowNull: false,
       validate:{
         isAlphanumeric:true
       }
     },
     username: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
       validate: {
         isAlphanumeric: true,
         len: [1]
       }
     },
-
-    password: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          // isAlphanumeric: true,
-          len: [1]
+    Address: {
+        type: DataTypes.TEXT,
+        allowNull: true,
+        validate:{
+            len: [10]
         }
-      },
-
+    },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -33,11 +30,17 @@ module.exports = function(sequelize, DataTypes) {
         isEmail: true,
         len: [1]
       }
-    }
     },
-  {
-    timestamps: false
-  });
+    password: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          // isAlphanumeric: true,
+          len: [1]
+        }
+      }
+    });
+
   User.associate = function(models){
     //adds association with Pawfile table
      User.hasMany(models.Pawfile, {

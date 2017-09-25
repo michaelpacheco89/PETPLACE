@@ -1,29 +1,38 @@
 module.exports = function(sequelize, DataTypes) {
-  var TextPost = sequelize.define("TextPost", {
+  var Post = sequelize.define("Post", {
 
-    text: {
+    textContent: {
       type: DataTypes.STRING,
       allowNull: true,
       validate: {
         len: [1]
       }
+    },
+    picContent: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    isProfile: {
+      type: DataTypes.BOOLEAN,
+      allowNull: true,
+      defaultValue: false
     }
 
     });
   TextPost.associate = function(models)
   {
     //adds association with User model via unique email.
-     TextPost.belongsTo(models.Pawfile, {
+     Post.belongsTo(models.Pawfile, {
        foreignKey: {
          allowNull: false
        }
     });
 
     //adds association to Pictures table
-    TextPost.hasMany(models.Comments, {
+    Post.hasMany(models.Comments, {
       onDelete: "cascade"
     });
 
   }
-  return TextPost;
+  return Post;
 };
