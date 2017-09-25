@@ -3,18 +3,34 @@
     font-family: 'Sigmar One', cursive;
     text-align: center;
     padding-top: 150px;
-    font-size: 100px;
-    color: #9047f7;
+    font-size: 80px;
+    color: #5bb3d3;
 }
 .page-footer,
 .footer-copyright {
     color: black;
-    background-color: #9047f7;
+    background-color: #5bb3d3;
+}
+
+.btn {
+    background-color: #5bb3d3;
 }
 
 .post {
-    color: black;
-    background-color: #bb96f2;
+    color: grey;
+    background-color: white, #bb96f2;
+
+}
+
+.submit {
+    color: grey;
+    padding: 10px;
+    /*border: 2px solid grey;*/
+    /*border-radius: 5px;*/
+}
+
+.sidebar {
+
 
 }
 
@@ -30,4 +46,9 @@ body {
 
 main {
   flex: 1 0 auto;
+}
+
+h4 {
+    color: grey;
+    /*text-align: center;*/
 }

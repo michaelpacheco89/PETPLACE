@@ -1,2 +1,8 @@
+<<<<<<< HEAD
 .DS_store
 node_modules
+=======
+node_modules
+.DS_Store
+package-lock.json
+>>>>>>> 23bd6fe75da533b7847470901d68d38477bedb80
