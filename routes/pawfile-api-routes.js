@@ -27,6 +27,7 @@ app.get("/api/pawfiles/:id",function(req,res){
 
 // post route for creating NEW Pawfile
 app.post("/api/pawfile", function(req,res){
+  console.log(req.body);
   db.Pawfile.create({
     name: req.body.name,
     species: req.body.species,
