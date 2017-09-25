@@ -2,19 +2,35 @@ var db = require("../models");
 var bcrypt = require("bcryptjs");
 
 module.exports = function(app) {
-
 //API route for getting ALL users
   app.get("/api/users", function(req, res) {
     db.User.findAll({
+      where:{
+        isShelter:false
+      },
       include: [{
         model: db.Pawfile,
-        as: "OwnerId"
+
       }]
+
     }).then(function(data) {
-      res.json(data);
+          return res.json(data);
     });
   });
 
+// API routes for getting ALL shelters
+app.get("/api/shelters", function(req, res) {
+  db.User.findAll({
+    where:{
+      isShelter:true
+    },
+    include: [{
+      model: db.Pawfile
+    }]
+  }).then(function(data) {
+        return res.json(data);
+  });
+});
 
 // API route to find user by id(optional)
 app.get("/api/users/:id", function(req, res) {
@@ -27,10 +43,33 @@ app.get("/api/users/:id", function(req, res) {
     query.id = req.params.id;
   }
   db.User.findOne({
-    where: query,
+    where: query && {
+      isShelter:false
+    },
     include: [{
-      model: db.Pawfile,
-      as: "OwnerId"
+      model: db.Pawfile
+    }]
+  }).then(function(data) {
+    res.json(data);
+  });
+});
+
+// API route to find shelter by id(optional)
+app.get("/api/shelters/:id", function(req, res) {
+  //checking to see if username exists for signup
+  var query = {};
+  // console.log(req.query.username);
+  if (req.query.name || req.query.email) {
+    query = req.query;
+  } else {
+    query.id = req.params.id;
+  }
+  db.User.findOne({
+    where: query && {
+      isShelter:true
+    },
+    include: [{
+      model: db.Pawfile
     }]
   }).then(function(data) {
     res.json(data);
@@ -38,7 +77,7 @@ app.get("/api/users/:id", function(req, res) {
 });
 
 // API route to validate password on user logins
-app.post("/api/users/login", function(req, res) {
+app.post("/api/user/login", function(req, res) {
   var query = req.query;
   db.User.findOne({where: query}).then(function(data) {
     if (data == null) {
@@ -53,8 +92,22 @@ app.post("/api/users/login", function(req, res) {
   });
 });
 
+// API route to validate password on SHELTER logins
+app.post("/api/shelter/login", function(req, res) {
+  var query = req.query;
+  db.User.findOne({where: query}).then(function(data) {
+    if (data == null) {
+      res.json({name: true});
+    } else {
+      res.json({
+        password: bcrypt.compareSync(req.body.password, data.password),
+        id: data.id
+      });
+    }
+  });
+});
+
 // API route to create NEW User
-// to create new user
 app.post("/api/users", function(req, res) {
     db.User.create({
         name: req.body.name,
@@ -63,6 +116,19 @@ app.post("/api/users", function(req, res) {
         password: bcrypt.hashSync(req.body.password)
     }).then(function(dbUser) {
         res.json(dbUser);
+    });
+});
+
+// API route to create NEW Shelter
+app.post("/api/shelters", function(req, res) {
+    db.User.create({
+        name: req.body.name,
+        address: req.body.address,
+        email: req.body.email,
+        password: bcrypt.hashSync(req.body.password),
+        isShelter:true
+    }).then(function(dbShelter) {
+        res.json(dbShelter);
     });
 });
 

@@ -16,7 +16,8 @@ module.exports = function(sequelize, DataTypes) {
             foreignKey: {
                 allowNull: true,
                 primaryKey: true
-            }
+            },
+            onDelete: "cascade"
         });
     };
     return Comments;

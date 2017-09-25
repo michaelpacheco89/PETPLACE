@@ -39,7 +39,7 @@ module.exports = function(sequelize, DataTypes) {
           len: [1]
         }
       },
-    isShelter: {
+    isShelter:{
       type: DataTypes.BOOLEAN,
       allowNull: true,
       defaultValue: false
@@ -51,7 +51,7 @@ module.exports = function(sequelize, DataTypes) {
      User.hasMany(models.Pawfile, {
        onDelete: "cascade",
        foreignKey: {
-         allowNull: false
+         allowNull:false
        }
     });
   };
