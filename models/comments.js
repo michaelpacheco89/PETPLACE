@@ -12,23 +12,10 @@ module.exports = function(sequelize, DataTypes) {
     });
 
     Comments.associate = function(models) {
-        Comments.belongsTo(models.Pictures, {
-            foreignKey: {
-                allowNull: false,
-                primaryKey: true,
-            }
-        });
-
-        Comments.belongsTo(models.Pawfile, {
+        Comments.belongsTo(models.Post, {
             onDelete: "cascade",
-            allowNull: false,
-            primaryKey: true,
-        });
-
-        Comments.belongsTo(models.TextPost, {
-            onDelete: "cascade",
-            allowNull: false,
-            primaryKey: true,
+            allowNull: true,
+            primaryKey: true
         });
     };
     return Comments;
