@@ -5,13 +5,17 @@ var React = require("react");
 var Link = require("react-router").Link;
 
 
-
-var Post = require("../components/Post.js");
-var Submit = require("../components/Submit.js");
 import NavBar from "../components/Navbar.js";
 // Create the Main component
 var Main = React.createClass({
-
+  getInitialState: function() {
+      return {
+        loggedin: false
+      };
+  },
+  logToggle: function(data) {
+      this.setState({loggedin: data});
+  },
   render: function() {
 
     return (
@@ -24,9 +28,8 @@ var Main = React.createClass({
 
             {/* <!-- BODY --> */}
             <div className="row section white">
-                <NavBar />
-                <Submit />
-                <Post />
+                <NavBar setParent={this.logToggle}/>
+                {this.props.children}
             </div>
             {/* <!-- PARALLAX AND FOOTER --> */}
             <div className="parallax-container">

@@ -38,6 +38,17 @@
     opacity: .4;
 }
 
+.card .card-image .card-title {
+    color: black;
+    text-align: center;
+
+}
+
+.pawcard {
+    height: 300px;
+    width: 300px;
+}
+
 body {
   display: flex;
   min-height: 100vh;

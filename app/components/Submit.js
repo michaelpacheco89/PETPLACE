@@ -21,7 +21,7 @@ var Submit = React.createClass({
 
     handleSubmit: function(event) {
         event.preventDefault();
-        console.log(this.state);
+        //console.log(this.state);
         this.setState({message: "", file: ""});
     },
 
@@ -34,7 +34,7 @@ var Submit = React.createClass({
     return (
         <div className="col s12 m9 l9">
             <div className="submit">
-                <form onSubmit={this.handleSubmit} encType="multipart/form-data"  action="" method="POST">
+                <form onSubmit={this.handleSubmit} encType="multipart/form-data" action="api/uploadImg/" method="POST">
                     <div className="row">
                         <div className="input-field">
                             <input id="message" type="text" value={this.state.search} onChange={this.handleChange} />
@@ -45,7 +45,7 @@ var Submit = React.createClass({
                     <div className="file-field input-field">
                         <div className="btn">
                             <span><i className="material-icons">add</i></span>
-                            <input name="file" type="file" />
+                            <input name="photo" type="file" />
                         </div>
 
                         <div className="file-path-wrapper">

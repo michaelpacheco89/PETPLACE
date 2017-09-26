@@ -20,9 +20,14 @@ var hashHistory = router.hashHistory;
 
 // Reference the high-level components
 var Main = require("../components/Main.js");
+var Shelters = require("../components/Shelters.js");
+var Profile = require("../components/Profile.js");
+var Home = require("../components/Home.js");
+var Mappy = require("../components/Map.js")
 
 var MuiThemeProvider = require("material-ui/styles").MuiThemeProvider;
 // import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
 
 // Export the Routes
 module.exports = (
@@ -30,10 +35,10 @@ module.exports = (
   <MuiThemeProvider>
   <Router history={hashHistory}>
     <Route path="/" component={Main}>
-
-      {/* If user selects any other path... we get the Home Route */}
-      <IndexRoute component={Main} />
-
+        <Route path="/pawfiles" component={Profile} />
+        <Route path="/shelters" component={Shelters} />
+        <Route path="/map" component={Mappy} />
+        <IndexRoute component={Home} />
     </Route>
   </Router>
   </MuiThemeProvider>
