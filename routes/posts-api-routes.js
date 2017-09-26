@@ -32,7 +32,7 @@ module.exports = function(app) {
 
   //this route will take in an image file and saved the filepath to the DB.
   //NOTE: need a way to track what pawfile is adding the picture, by default we are including the id of each pawfile, just need a way to pass that to the route in the frontend.
-  app.post("/api/uploadImg", (req, res) => {
+  app.post("/api/uploadImg/:pawfileId", (req, res) => {
 
     //multer object that does the work.
     upload(req, res, function(err) {
@@ -54,7 +54,7 @@ module.exports = function(app) {
       //saves filepath to database.
       db.Post.create({
           picContent: filePath,
-          PawfileId: req.cookies.pawfileId
+          PawfileId: req.params.pawfileId
       }).then(dbPicture => {
         console.log("added to DB");
         res.json(dbPicture);
