@@ -6,12 +6,23 @@ module.exports = function(app) {
   app.get("/api/pawfiles", function(req,res){
     db.Pawfile.findAll({
       include:[{
-        model: db.Pictures,
-        as: "OwnedPics"
-      }]
+        model: db.Posts}]
     }).then(function(data){
       console.log(data);
       res.json(data);
+    });
+  });
+
+  //route for finding all of a single user's pawfiles
+  app.get("/api/pawfiles/:userId", (req, res)=> {
+    db.Pawfile.findAll({
+      where:{
+        UserId: req.params.userId
+      },
+      include:[{model:db.Posts}]
+    }).then(data => {
+      console.log(data);
+      res.json(data)
     });
   });
 
@@ -20,7 +31,8 @@ app.get("/api/pawfiles/:id",function(req,res){
   db.Pawfile.findOne({
     where:{
       id:req.params.id
-    }
+    },
+    include:[{model: db.Posts}]
   }).then(function(data){
     res.clearCookie("pawfileId");
     res.cookie("pawfileId", data.id);

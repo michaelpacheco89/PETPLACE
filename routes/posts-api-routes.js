@@ -14,7 +14,7 @@ module.exports = function(app) {
 
   //sets up storage for photo files
   var storage = multer.diskStorage({
-    destination: "./images",
+    destination: "../public/assets/images",
     //creates a new filename to be stored in a image folder.
     filename: function(req, file, cb) {
       crypto.pseudoRandomBytes(16, (err, raw) => {
@@ -32,7 +32,7 @@ module.exports = function(app) {
 
   //this route will take in an image file and saved the filepath to the DB.
   //NOTE: need a way to track what pawfile is adding the picture, by default we are including the id of each pawfile, just need a way to pass that to the route in the frontend.
-  app.post("/api/uploadImg/", (req, res) => {
+  app.post("/api/uploadImg", (req, res) => {
 
     //multer object that does the work.
     upload(req, res, function(err) {
@@ -127,8 +127,7 @@ module.exports = function(app) {
       //req.body.post should be content of post.
       db.Post.create({
           textContent: req.body.post,
-          //body is for testing
-          PawfileId: req.body.pawfileId
+          PawfileId: req.cookies.pawfileId
       }).then(dbPost => {
         console.log("added to DB");
         res.json(dbPost);
@@ -136,7 +135,7 @@ module.exports = function(app) {
     });
 
   //route to update text post
-  app.put("/api/changeProfilePic/:postId", (req, res) =>{
+  app.put("/api/changeTextPost/:postId", (req, res) =>{
     //req.body.post should be updated text post content
     db.Post.update({
         textContent: req.body.post

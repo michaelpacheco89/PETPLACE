@@ -5,9 +5,9 @@ module.exports = function(app) {
 //API route for getting ALL users
   app.get("/api/users", function(req, res) {
     db.User.findAll({
-      where:{
-        isShelter:false
-      },
+      // where:{
+      //   isShelter:false
+      // },
       include: [{
         model: db.Pawfile,
 
@@ -78,35 +78,36 @@ app.get("/api/shelters/:id", function(req, res) {
 
 // API route to validate password on user logins
 app.post("/api/user/login", function(req, res) {
-  var query = req.query;
-  db.User.findOne({where: query}).then(function(data) {
-    if (data == null) {
+  db.User.findOne({where: {
+    email: req.body.email
+  }
+  }).then(function(data) {
+    if (data === null) {
       res.json({username: true});
     } else {
       res.cookie("UserId", data.id);
       res.json({
-        password: bcrypt.compareSync(req.body.password, data.password),
-        id: data.id
+        password: bcrypt.compareSync(req.body.password, data.password)
       });
     }
   });
 });
 
-// API route to validate password on SHELTER logins
-app.post("/api/shelter/login", function(req, res) {
-  var query = req.query;
-  db.User.findOne({where: query}).then(function(data) {
-    if (data == null) {
-      res.json({name: true});
-    } else {
-      res.cookie("userId", data.id);
-      res.json({
-        password: bcrypt.compareSync(req.body.password, data.password),
-        id: data.id
-      });
-    }
-  });
-});
+// // API route to validate password on SHELTER logins
+// app.post("/api/shelter/login", function(req, res) {
+//   var query = req.query;
+//   db.User.findOne({where: query}).then(function(data) {
+//     if (data == null) {
+//       res.json({name: true});
+//     } else {
+//       res.cookie("userId", data.id);
+//       res.json({
+//         password: bcrypt.compareSync(req.body.password, data.password),
+//         id: data.id
+//       });
+//     }
+//   });
+// });
 
 // API route to create NEW User
 app.post("/api/users", function(req, res) {
