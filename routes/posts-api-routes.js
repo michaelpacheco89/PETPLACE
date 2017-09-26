@@ -4,6 +4,7 @@ const multer = require("multer");
 const crypto = require("crypto");
 const fs = require('fs');
 const path = require("path");
+var sequelize = require("sequelize");
 
 
 
@@ -62,7 +63,7 @@ module.exports = function(app) {
   });
 
   //route to retrieve the profile Pic for a pawfile
-  app.get("/api/profilePic/", (req, res) => {
+  app.get("/api/profilePic", (req, res) => {
     //looks for a picture with a matching pawfileId
     //and where isProfile is true.
     //this route is intended to be used to load profile Pic
@@ -77,9 +78,10 @@ module.exports = function(app) {
   });
 
   //route to update profile picture
-  app.post("api/changeProfilePic/:pic", (req, res) =>{
+  app.post("/api/changeProfilePic/:picId", (req, res) =>{
     //first it updates the current profile picture
     //to make it not a prof pic.
+    console.log("pic link: "+ req.params.picId);
     db.Post.update({
         isProfile: false
       },
@@ -95,9 +97,10 @@ module.exports = function(app) {
       },
       {
         where: {
-          picContent: req.params.pic
+          id: req.params.picId
         }
       }).then( data => {
+        console.log(data);
         res.json(data);
       });
     });
@@ -105,11 +108,11 @@ module.exports = function(app) {
 
   //route to delete picture. I'm including pawfileId
   //and pic to make it more difficult for nefarious deletions.
-  app.delete("api/deletePic/:pic", (req, res) => {
+  app.delete("api/deletePic/:picId", (req, res) => {
     db.Post.destroy({
       where: {
         PawfileId: req.cookies.pawfileId,
-        picContent: req.params.pic
+        picContent: req.params.picId
       }
     }).then(results => {
       res.json(results);
@@ -120,17 +123,17 @@ module.exports = function(app) {
   //ROUTES FOR TEXT POSTS
 
   //route for making and sending new text post to db
-  app.post("/api/sendTextPost/", (req, res) => {
+  app.post("/api/sendTextPost", (req, res) => {
       //req.body.post should be content of post.
       db.Post.create({
           textContent: req.body.post,
-          PawfileId: req.cookies.pawfileId
+          //body is for testing
+          PawfileId: req.body.pawfileId
       }).then(dbPost => {
         console.log("added to DB");
         res.json(dbPost);
       });
     });
-  });
 
   //route to update text post
   app.put("/api/changeProfilePic/:postId", (req, res) =>{
@@ -166,7 +169,7 @@ module.exports = function(app) {
     db.Post.findAll({
       include: [db.Pawfile],
       order: [
-        sequelize.fn(sequelize.col(id), 'DESC')
+        sequelize.literal("id DESC")
       ],
       limit: 25
     }).then(results => {
@@ -176,10 +179,10 @@ module.exports = function(app) {
 
   //get route intended to get all posts for an individual pawfile
   app.get("/api/userFeed/:pawfileId", (req, res) => {
-    db.Pawfile.findAll({
-      include: [db.Post],
+    db.Post.findAll({
+      include: [db.Pawfile],
       where: {
-        id: req.params.pawfileId
+        PawfileId: req.params.pawfileId
       }
     }).then(results =>
       {
@@ -193,7 +196,10 @@ module.exports = function(app) {
       include: [{
         model: db.Comments,
         include: [{
-          model: db.Pawfile
+          model: db.Pawfile,
+          include: [{
+            model: db.Post
+          }]
         }]
       }],
       where: {
@@ -212,7 +218,7 @@ module.exports = function(app) {
       //text content
       title: req.body.comment,
       //post that comment belongs to.
-      postId: req.params.postId,
+      PostId: req.params.postId,
       //creator of comment.
       PawfileId: req.cookies.pawfileId
     }).then(results => {
