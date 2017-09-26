@@ -8,7 +8,7 @@ var Link = require("react-router").Link;
 
 var Post = require("../components/Post.js");
 var Submit = require("../components/Submit.js");
-import Sidebar from "../components/Sidebar.js";
+import NavBar from "../components/Navbar.js";
 // Create the Main component
 var Main = React.createClass({
 
@@ -24,7 +24,7 @@ var Main = React.createClass({
 
             {/* <!-- BODY --> */}
             <div className="row section white">
-                <Sidebar />
+                <NavBar />
                 <Submit />
                 <Post />
             </div>

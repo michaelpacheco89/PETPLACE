@@ -3,27 +3,26 @@ var materialUI = require("material-ui");
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 
-var Post = () => (
-<div className="post col s12 m9 l9">
-    <materialUI.Card>
-        <materialUI.CardHeader title="User Name" avatar="assets/images/cat1.jpg"/>
 
-        <materialUI.CardMedia>
-            <img src="assets/images/cat1.jpg" alt="img" />
-        </materialUI.CardMedia>
+var Post = React.createClass({
 
-        <materialUI.CardActions>
-            <materialUI.FlatButton label="Like" />
-        </materialUI.CardActions>
+    render: function() {
+        return (
+            <div className="post col s12 m9 l9">
+                <div className="card">
+                    <div className="card-image">
+                        <img src="assets/images/cat1.jpg" />
+                        <span className="card-title">Card Title</span>
+                        <a className="btn-floating halfway-fab waves-effect waves-light red"><i className="material-icons">add</i></a>
+                    </div>
+                    <div className="card-content">
+                        <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+});
 
-        <materialUI.CardText>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
-              Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
-              Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
-        </materialUI.CardText>
-    </materialUI.Card>
-</div>
-);
 
 module.exports = Post;
