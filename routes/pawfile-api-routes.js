@@ -22,8 +22,8 @@ app.get("/api/pawfiles/:id",function(req,res){
       id:req.params.id
     }
   }).then(function(data){
-    clearCookie(pawfileId);
-    res.cookie(pawfileId, data.pawfileId);
+    res.clearCookie("pawfileId");
+    res.cookie("pawfileId", data.id);
     res.json(data);
   });
 });
@@ -37,7 +37,7 @@ app.post("/api/pawfile/", function(req,res){
     breed: req.body.breed,
     sex: req.body.sex,
     age: req.body.age,
-    UserId: req.cookies.userId
+    UserId: req.cookies.UserId
   }).then(function(data){
     res.json(data);
   });

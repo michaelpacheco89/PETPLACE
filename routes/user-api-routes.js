@@ -83,7 +83,7 @@ app.post("/api/user/login", function(req, res) {
     if (data == null) {
       res.json({username: true});
     } else {
-      res.cookie("userId", data.id);
+      res.cookie("UserId", data.id);
       res.json({
         password: bcrypt.compareSync(req.body.password, data.password),
         id: data.id
@@ -99,6 +99,7 @@ app.post("/api/shelter/login", function(req, res) {
     if (data == null) {
       res.json({name: true});
     } else {
+      res.cookie("userId", data.id);
       res.json({
         password: bcrypt.compareSync(req.body.password, data.password),
         id: data.id
@@ -115,6 +116,7 @@ app.post("/api/users", function(req, res) {
         email: req.body.email,
         password: bcrypt.hashSync(req.body.password)
     }).then(function(dbUser) {
+        res.cookie("userId", dbUser.id);
         res.json(dbUser);
     });
 });
