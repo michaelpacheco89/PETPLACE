@@ -1,0 +1,54 @@
+.header {
+
+    font-family: 'Sigmar One', cursive;
+    text-align: center;
+    padding-top: 150px;
+    font-size: 80px;
+    color: #5bb3d3;
+}
+.page-footer,
+.footer-copyright {
+    color: black;
+    background-color: #5bb3d3;
+}
+
+.btn {
+    background-color: #5bb3d3;
+}
+
+.post {
+    color: grey;
+    background-color: white, #bb96f2;
+
+}
+
+.submit {
+    color: grey;
+    padding: 10px;
+    /*border: 2px solid grey;*/
+    /*border-radius: 5px;*/
+}
+
+.sidebar {
+
+
+}
+
+.parallax {
+    opacity: .4;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+h4 {
+    color: grey;
+    /*text-align: center;*/
+}
