@@ -6,16 +6,38 @@ var Link = require("react-router").Link;
 
 // Create the Main component
 var Submit = React.createClass({
+    getInitialState: function() {
+      return {
+        message: "",
+        file: ""
+      };
+    },
 
-  render: function() {
+    handleChange: function(event) {
+      var newState = {};
+      newState[event.target.id] = event.target.value;
+      this.setState(newState);
+    },
+
+    handleSubmit: function(event) {
+        event.preventDefault();
+        console.log(this.state);
+        this.setState({message: "", file: ""});
+    },
+
+    componentDidUpdate: function() {
+
+    },
+
+    render: function() {
 
     return (
         <div className="col s12 m9 l9">
             <div className="submit">
-                <form action="#">
+                <form onSubmit={this.handleSubmit} encType="multipart/form-data"  action="" method="POST">
                     <div className="row">
                         <div className="input-field">
-                            <input id="message" type="text" className="validate" />
+                            <input id="message" type="text" value={this.state.search} onChange={this.handleChange} />
                             <label htmlFor="message">What's Up?</label>
                         </div>
                     </div>
@@ -23,13 +45,14 @@ var Submit = React.createClass({
                     <div className="file-field input-field">
                         <div className="btn">
                             <span><i className="material-icons">add</i></span>
-                            <input type="file" />
+                            <input name="file" type="file" />
                         </div>
 
                         <div className="file-path-wrapper">
                             <input className="file-path validate" type="text" />
                         </div>
                     </div>
+                    <button type="submit" className="btn">Submit</button>
                 </form>
             </div>
         </div>
