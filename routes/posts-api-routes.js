@@ -50,7 +50,7 @@ module.exports = function(app) {
 
       //creates filepath to be saved in database
       var filePath = `./${req.file.path}`;
-      console.log(req.params.pawfileId);
+      console.log(req.cookies.pawfileId);
       //saves filepath to database.
       db.Post.create({
           picContent: filePath,
