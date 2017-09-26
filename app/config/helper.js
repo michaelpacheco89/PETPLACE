@@ -41,7 +41,7 @@ const helper = {
 
   //route to find all user's pawfiles
   findUserPawfiles: function(userId) {
-    return axios.get("/api/pawfiles/:/"+userId).then(data => {
+    return axios.get("/api/pawfiles/"+userId).then(data => {
       console.log("Users pawfile data: "+data);
       return data;
     });
@@ -49,8 +49,15 @@ const helper = {
 
   //route used to login to user pawfile
   findOnePawfile: function(id) {
-    return axios.get("/api/pawfiled:/"+id).then(data => {
+    return axios.get("/api/pawfiled/"+id).then(data => {
       console.log("Single pawfile data: "+data);
+      return data;
+    });
+  }
+
+  //route for setting a pawfile Cookie.
+  setCookie: function(id) {
+    return axios.get("/api/setCookie/"+id).then(data => {
       return data;
     });
   }
@@ -64,14 +71,14 @@ const helper = {
   }
   //retrieves all posts for one pawfile
   getPawfileFeed: function(pawfileId) {
-    return axios.get("/api/userFeed/:"+pawfileId).then(data => {
+    return axios.get("/api/userFeed/"+pawfileId).then(data => {
       console.log("pawfile feed data: "+ data);
       return data;
     });
   }
   //retrieves comments for a post
   getComments: function(postId) {
-    return axios.get("/api/getComments/:"+postId).then(data => {
+    return axios.get("/api/getComments/"+postId).then(data => {
       console.log("comment data: "+data);
       return data;
     });
