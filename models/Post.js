@@ -16,8 +16,15 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.BOOLEAN,
       allowNull: true,
       defaultValue: false
+    },
+    likes: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      defaultValue: 0,
+      isLiked:{
+        defaultValue: false
+      }
     }
-
     });
   Post.associate = function(models)
   {
