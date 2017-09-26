@@ -83,12 +83,12 @@ app.post("/api/user/login", function(req, res) {
   }
   }).then(function(data) {
     if (data === null) {
-      res.json({username: true});
-    } else {
+      res.json({email: true});
+    }
+    else if(bcrypt.compareSync(req.body.password, data.password))
+    {
       res.cookie("UserId", data.id);
-      res.json({
-        password: bcrypt.compareSync(req.body.password, data.password)
-      });
+      res.redirect("/");
     }
   });
 });
