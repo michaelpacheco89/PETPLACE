@@ -34,9 +34,19 @@ app.get("/api/pawfiles/:id",function(req,res){
     },
     include:[{model: db.Posts}]
   }).then(function(data){
+    res.json(data);
+  });
+});
+
+//sets cookie for pawfile
+app.get("/api/setCookie/:id", (req, res) => {
+  db.Pawfile.findOne({
+    where: {
+      id: req.params.id
+    }
+  }).then(data => {
     res.clearCookie("pawfileId");
     res.cookie("pawfileId", data.id);
-    res.json(data);
   });
 });
 
