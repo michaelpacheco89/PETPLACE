@@ -76,7 +76,38 @@ module.exports = function(app) {
       res.json(results);
     });
   });
+// ================
+// route for clicking the LIKE BTN
+  app.post("/api/likePost/:id", (req,res) =>{
+    db.Post.findOne({
+      where:{
+        id: req.params.id
+      }
+    }).then(data => {
+      data.increment("likes", {by:1});
+      data.update({isLiked: true});
+    }).then(data => {
+      return res.json(data);
+    });
+  });
 
+// route for UNLIKING a post
+app.post("/api/unlikePost/:id", (req,res) =>{
+  db.Post.findOne({
+    where:{
+      id: req.params.id,
+      likes:{
+        isLiked:true
+      }
+    }
+  }).then(data => {
+    data.decrement("likes", {by:1});
+    data.update({isLiked: false});
+  }).then(data =>{
+    return res.json(data);
+  });
+});
+// =================
   //route to update profile picture
   app.post("/api/changeProfilePic/:picId", (req, res) =>{
     //first it updates the current profile picture
