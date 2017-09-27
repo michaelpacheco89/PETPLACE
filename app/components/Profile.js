@@ -1,22 +1,31 @@
 var React = require("react");
 var Link = require("react-router").Link;
+import helper from "../config/helper";
 
 
 var Profile = React.createClass({
     getInitialState: function() {
         return {
-
+          
         }
     },
-    componentDidMount: function() {
-
+    componentWillMount: function() {
+      helper.findUserPawfiles().then(data => {
+        console.log(data);
+      });
     },
 
     componentDidUpdate: function() {
 
     },
 
+    //this handles a pawfile being set as active.
+    handleClick: function() {
+
+    },
+
     render: function() {
+
         return (
         <div className="outerdiv">
             <div className="row">
