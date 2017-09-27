@@ -5,13 +5,20 @@ var React = require("react");
 var Link = require("react-router").Link;
 
 
-
-var Post = require("../components/Post.js");
-var Submit = require("../components/Submit.js");
 import NavBar from "../components/Navbar.js";
 // Create the Main component
 var Main = React.createClass({
+  getInitialState: function() {
+      return {
+        loggedin: false
+      };
+  },
+  componentDidUpdate: function() {
+  },
 
+  logToggle: function(data) {
+      this.setState({loggedin: data});
+  },
   render: function() {
 
     return (
@@ -19,14 +26,13 @@ var Main = React.createClass({
             {/* <!-- HEADER --> */}
             <div className="parallax-container">
                 <div className="parallax"><img src="assets/images/tracks.jpg" /></div>
-                <h2 className="header">SCATCHAT<i className="material-icons">pets</i></h2>
+                <h2 className="header">herdIt<i className="material-icons">pets</i></h2>
             </div>
 
             {/* <!-- BODY --> */}
             <div className="row section white">
-                <NavBar />
-                <Submit />
-                <Post />
+                <NavBar setParent={this.logToggle}/>
+                {this.props.children}
             </div>
             {/* <!-- PARALLAX AND FOOTER --> */}
             <div className="parallax-container">
@@ -35,7 +41,7 @@ var Main = React.createClass({
 
             <footer className="page-footer">
                 <div className="container">
-                    <div className="row"> CONTENT TBD
+                    <div className="row">
                     </div>
                 </div>
 

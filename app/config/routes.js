@@ -25,6 +25,7 @@ import Login from "../components/Login";
 var MuiThemeProvider = require("material-ui/styles").MuiThemeProvider;
 // import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
+
 // Export the Routes
 module.exports = (
   // High level component is the Router component.
@@ -32,9 +33,11 @@ module.exports = (
   <Router history={hashHistory}>
     <Route path="/loginPage" component={Login} />
     <Route path="/" component={Main}>
-
-      {/* If user selects any other path... we get the Home Route */}
-      <IndexRoute component={Main} />
+        <Route path="/profile" component={Profile} />
+        <Route path="/pawfile" component={Pawfile} />
+        <Route path="/shelters" component={Shelters} />
+        <Route path="/map" component={Mappy} />
+        <IndexRoute component={Home} />
     </Route>
 
   </Router>
