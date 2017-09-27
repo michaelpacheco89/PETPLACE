@@ -16,19 +16,19 @@ var NavBar = React.createClass({
     },
 
     componentDidUpdate: function() {
-
     },
 
     logToggle: function(event) {
         event.preventDefault();
         var data = !this.state.loggedin;
+        this.setState({loggedin: !this.state.loggedin});
         this.props.setParent(data);
     },
 
     render: function() {
         if (!this.state.loggedin) {
             return (
-                <div className="sidebar col s12 m2 l2">
+                <div className="sidebar col s12 l2">
                     <h4> Navigate </h4>
                     <List>
                         <Link to="/"><ListItem primaryText="Feed" leftIcon={<ActionGrade />} /></Link>
@@ -42,17 +42,17 @@ var NavBar = React.createClass({
         }
         else {
             return (
-                <div className="sidebar col s12 m2 l2">
+                <div className="sidebar col s12 l2">
                     <h4> Navigate </h4>
                     <List>
                         <Link to="/"><ListItem primaryText="Feed" leftIcon={<ActionGrade />} /></Link>
                             <Divider />
                         <Link to="/shelters"><ListItem primaryText="Explore Shelters" leftIcon={<NearMe />} /></Link>
                             <Divider />
-                        <Link to="/pawfiles"><ListItem primaryText="Pawfiles" leftIcon={<NearMe />} /></Link>
+                        <Link to="/profile"><ListItem primaryText="Profile" leftIcon={<NearMe />} /></Link>
                             <Divider />
                         <Link to="/map"><ListItem primaryText="Map" leftIcon={<NearMe />} /></Link>
-                        <a href="#" onClick={this.logToggle}><ListItem primaryText="Log Out" leftIcon={<ContentInbox />} /></a>
+                        <Link to="/" onClick={this.logToggle}><ListItem primaryText="Log Out" leftIcon={<ContentInbox />} /></Link>
                     </List>
                 </div>
             );

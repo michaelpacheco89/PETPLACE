@@ -23,7 +23,8 @@ var Main = require("../components/Main.js");
 var Shelters = require("../components/Shelters.js");
 var Profile = require("../components/Profile.js");
 var Home = require("../components/Home.js");
-var Mappy = require("../components/Map.js")
+var Mappy = require("../components/Map.js");
+var Pawfile = require("../components/Pawfile.js");
 
 var MuiThemeProvider = require("material-ui/styles").MuiThemeProvider;
 // import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -35,7 +36,8 @@ module.exports = (
   <MuiThemeProvider>
   <Router history={hashHistory}>
     <Route path="/" component={Main}>
-        <Route path="/pawfiles" component={Profile} />
+        <Route path="/profile" component={Profile} />
+        <Route path="/pawfile" component={Pawfile} />
         <Route path="/shelters" component={Shelters} />
         <Route path="/map" component={Mappy} />
         <IndexRoute component={Home} />

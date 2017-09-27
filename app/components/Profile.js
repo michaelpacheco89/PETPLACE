@@ -18,33 +18,41 @@ var Profile = React.createClass({
 
     render: function() {
         return (
+        <div className="outerdiv">
             <div className="row">
-                <div className=" pawcard col m2">
+                <Link to="/pawfile"><div className=" pawcard col l2 s12 offset-s1">
                     <div className="card">
                         <div className="card-image">
                             <img src="assets/images/cat1.jpg" />
                             <span className="card-title">Pawfile #1</span>
                         </div>
                         <div className="card-content">
-                            <a className="btn">Active</a>
-                            <a className="btn">View</a>
+                            <button className="btn">Active</button>
+                            <button className="btn">View</button>
                         </div>
                     </div>
-                </div>
+                </div></Link>
 
-                <div className=" pawcard col m2">
+                <Link to="/pawfile"><div className=" pawcard col l2 s12 offset-s1">
                     <div className="card">
                         <div className="card-image">
                             <img src="assets/images/cat1.jpg" />
                             <span className="card-title">Pawfile #2</span>
                         </div>
                         <div className="card-content">
-                            <a className="btn">Active</a>
-                            <a className="btn">View</a>
+                            <button className="btn">Active</button>
+                            <button className="btn">View</button>
                         </div>
                     </div>
-                </div>
+                </div></Link>
             </div>
+
+            <div className="userprofholder col s10 offset-s2">
+                Username:
+                other info here
+            </div>
+
+        </div>
         );
     }
 });
