@@ -121,7 +121,7 @@ app.post("/api/users", function(req, res) {
         email: req.body.email,
         password: bcrypt.hashSync(req.body.password)
     }).then(function(dbUser) {
-        res.cookie("userId", dbUser.id);
+        res.cookie("UserId", dbUser.id);
         res.json(dbUser);
     });
 });
@@ -149,4 +149,11 @@ app.delete("/api/users/:id", function(req, res) {
         res.json(dbUser);
     });
 });
+
+
+//route to logout and clear cookies
+  app.get("/api/logout", (req, res) => {
+    res.clearCookie("UserId");
+    res.clearCookie("pawfileId");
+  });
 };

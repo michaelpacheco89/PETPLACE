@@ -21,6 +21,7 @@ var Submit = React.createClass({
 
     handleSubmit: function(event) {
         event.preventDefault();
+        console.log("pushed the button");
         if(this.state.message !== "" && this.state.photo !== "")
         {
           //make a new route that adds text and photo at same time.
@@ -47,12 +48,12 @@ var Submit = React.createClass({
     render: function() {
 
     return (
-        <div className="col s12 m9 l9">
-            <div className="submit">
+
+            <div className="submit col s12 m5 offset-m2">
                 <form onSubmit={this.handleSubmit} encType="multipart/form-data" action="api/uploadImg/" method="POST">
-                    <div className="row">
+                    <div>
                         <div className="input-field">
-                            <input id="message" type="text" value={this.state.search} onChange={this.handleChange} />
+                            <input id="message" type="text" value={this.state.message} onChange={this.handleChange} />
                             <label htmlFor="message">What's Up?</label>
                         </div>
                     </div>
@@ -70,7 +71,6 @@ var Submit = React.createClass({
                     <button type="submit" className="btn">Submit</button>
                 </form>
             </div>
-        </div>
 
     );
   }

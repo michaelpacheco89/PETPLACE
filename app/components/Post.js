@@ -3,41 +3,50 @@ var React = require("react");
 var Post = React.createClass({
     getInitialState: function() {
         return {
-            liked: false
+            //liked: false
         }
     },
     componentDidMount: function() {
-        //console.log(this.state.liked);
+
     },
 
     componentDidUpdate: function() {
-        //console.log(this.state.liked);
+        console.log(this.props);
     },
 
     likeClick: function(event) {
         event.preventDefault();
-        this.setState({liked: !this.state.liked});
+        var like = !this.props.data.liked;
+        // this.setState({liked: !this.state.liked});
+        this.props.setParent(like, this.props.key);
     },
 
     render: function() {
         return (
-            <div className="post col s12 m9 l9">
-                <div className="card">
-                    <div className="card-image">
-                        <img src="assets/images/cat1.jpg" />
-                        {this.state.liked ? (<a href="#" onClick={this.likeClick} className="btn-floating halfway-fab waves-effect waves-light red"><i className="material-icons">favorite</i></a>) : (<a href="#" onClick={this.likeClick} className="btn-floating halfway-fab waves-effect waves-light red"><i className="material-icons">favorite_border</i></a>)}
-                    </div>
-                    <div className="card-content">
-                        <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
-                    </div>
-                    <div>
-
-                    </div>
-                </div>
+            <div className="col offset-s4">
+                {this.props.data.map(item => (
+                     <div key={item.key} className="post col s12 m8">
+                         <div className="card">
+                             <div className="card-header">
+                                <img src="assets/images/cat1.jpg" className="avatar circle" />
+                             </div>
+                             <div className="card-image">
+                                 {/* pull image source from this.props.data */}
+                                 <img src={item.img} />
+                                 {item.liked ? (<a href="#" onClick={this.likeClick} className="btn-floating halfway-fab waves-effect waves-light red"><i className="material-icons">favorite</i></a>) : (<a href="#" onClick={this.likeClick} className="btn-floating halfway-fab waves-effect waves-light red"><i className="material-icons">favorite_border</i></a>)}
+                             </div>
+                             <div className="card-content">
+                                 <p>{item.text}</p>
+                             </div>
+                             <div>
+                                 {/* comments area */}
+                             </div>
+                         </div>
+                     </div>
+                ))}
             </div>
         );
     }
 });
-
 
 module.exports = Post;
