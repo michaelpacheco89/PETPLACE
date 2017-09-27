@@ -26,10 +26,10 @@ class Login extends Component
     console.log("button click");
     helper.validateUser(this.state.email, this.state.password)
     .then(data => {
-      console.log(data);
       //if no email is found
-      if(data.email)
+      if(data.data.email)
       {
+        console.log("no email");
         alert("user email does not exist");
         this.setState({email: "", password: ""});
       }

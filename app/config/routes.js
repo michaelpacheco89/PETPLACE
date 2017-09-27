@@ -21,6 +21,13 @@ var hashHistory = router.hashHistory;
 // Reference the high-level components
 var Main = require("../components/Main.js");
 import Login from "../components/Login";
+
+var Profile = require("../components/Profile");
+var Pawfile = require("../components/Pawfile");
+var Shelters = require("../components/Shelters");
+var Mappy = require("../components/Map");
+var Home = require("../components/Home");
+
 import Signup from "../components/signup.js";
 import ShelterSignup from "../components/shelsignup.js";
 
