@@ -32,10 +32,10 @@ var Submit = React.createClass({
     render: function() {
 
     return (
-        <div className="col s12 m9 l9">
-            <div className="submit">
+
+            <div className="submit col s12 m5 offset-m2">
                 <form onSubmit={this.handleSubmit} encType="multipart/form-data" action="api/uploadImg/" method="POST">
-                    <div className="row">
+                    <div>
                         <div className="input-field">
                             <input id="message" type="text" value={this.state.search} onChange={this.handleChange} />
                             <label htmlFor="message">What's Up?</label>
@@ -55,7 +55,6 @@ var Submit = React.createClass({
                     <button type="submit" className="btn">Submit</button>
                 </form>
             </div>
-        </div>
 
     );
   }

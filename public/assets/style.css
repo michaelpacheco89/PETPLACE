@@ -1,5 +1,12 @@
-.header {
+body {
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
 
+.header {
     font-family: 'Sigmar One', cursive;
     text-align: center;
     padding-top: 150px;
@@ -19,21 +26,25 @@
 .post {
     color: grey;
     background-color: white, #bb96f2;
+    border-radius: 5px;
 
 }
 
 .submit {
+    background-color: lightgrey;
     color: grey;
-    padding: 10px;
-    /*border: 2px solid grey;*/
-    /*border-radius: 5px;*/
+    border-radius: 5px;
 }
 
 .sidebar {
 
 
 }
-
+.avatar {
+    margin: 5px;
+    height: 50px;
+    width: 50px;
+}
 .parallax {
     opacity: .4;
 }
@@ -49,17 +60,10 @@
     width: 300px;
 }
 
-body {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-}
-
 main {
   flex: 1 0 auto;
 }
 
 h4 {
     color: grey;
-    /*text-align: center;*/
 }

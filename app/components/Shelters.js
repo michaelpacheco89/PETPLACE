@@ -16,7 +16,7 @@ var Main = React.createClass({
 
     return (
         <div>
-            <Post />
+            {/* <Post /> */}
         </div>
 
     );
