@@ -20,6 +20,8 @@ var hashHistory = router.hashHistory;
 
 // Reference the high-level components
 var Main = require("../components/Main.js");
+import Signup from "../components/signup.js";
+import ShelterSignup from "../components/shelsignup.js";
 
 var MuiThemeProvider = require("material-ui/styles").MuiThemeProvider;
 // import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -35,6 +37,8 @@ module.exports = (
       <IndexRoute component={Main} />
 
     </Route>
+    <Route path= "/user/signup" component={Signup} />
+    <Route path= "/shelter/signup" component={ShelterSignup} />
   </Router>
   </MuiThemeProvider>
 );
