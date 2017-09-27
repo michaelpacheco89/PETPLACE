@@ -32,17 +32,17 @@ const helper = {
   },
 
   //route to create new pawfile
-  makePawfile: function(name, species, breed, sex, age) {
-    var body = {name, species, breed, sex, age};
-    return axios.post("/api/pawfile", body).then(data => {
+  makePawfile: function(newPawfile) {
+    console.log(newPawfile);
+    return axios.post("/api/pawfile", newPawfile).then(data => {
       console.log("new pawfile data: "+data);
       return data;
     });
   },
 
-  //route to find all user's pawfiles
+  //route to find a single user's pawfiles
   findUserPawfiles: function(userId) {
-    return axios.get("/api/pawfiles/"+userId).then(data => {
+    return axios.get("/api/user/pawfiles/").then(data => {
       console.log("Users pawfile data: "+data);
       return data;
     });

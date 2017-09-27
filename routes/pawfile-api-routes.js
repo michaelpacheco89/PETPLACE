@@ -14,7 +14,7 @@ module.exports = function(app) {
   });
 
   //route for finding all of a single user's pawfiles
-  app.get("/api/pawfiles/", (req, res)=> {
+  app.get("/api/user/pawfiles/", (req, res)=> {
     db.Pawfile.findAll({
       where:{
         UserId: req.cookies.UserId
@@ -61,6 +61,8 @@ app.post("/api/pawfile/", function(req,res){
     age: req.body.age,
     UserId: req.cookies.UserId
   }).then(function(data){
+    res.clearCookie("pawfileId");
+    res.cookie("pawfileId", data.id);
     res.json(data);
   });
 });

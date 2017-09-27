@@ -21,7 +21,7 @@ var hashHistory = router.hashHistory;
 // Reference the high-level components
 var Main = require("../components/Main.js");
 import Login from "../components/Login";
-
+import makePawfile from "../components/makePawfile";
 var Profile = require("../components/Profile");
 var Pawfile = require("../components/Pawfile");
 var Shelters = require("../components/Shelters");
@@ -42,8 +42,9 @@ module.exports = (
   <Router history={hashHistory}>
     {/* ===============sign up and log in routes============= */}
     <Route path="/loginPage" component={Login} />
-    <Route path= "/user/signup" component={Signup} />
-    <Route path= "/shelter/signup" component={ShelterSignup} />
+    <Route path="/user/signup" component={Signup} />
+    <Route path="/shelter/signup" component={ShelterSignup} />
+    <Route path="/pawfile/create" component={makePawfile} />
     {/* ======================================================= */}
     <Route path="/" component={Main}>
         <Route path="/profile" component={Profile} />

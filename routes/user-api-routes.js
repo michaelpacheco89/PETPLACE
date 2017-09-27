@@ -89,6 +89,8 @@ app.post("/api/user/login", function(req, res) {
     }
     else if(bcrypt.compareSync(req.body.password, data.password))
     {
+      console.log("I should create a cookie");
+      res.clearCookie("UserId");
       res.cookie("UserId", data.id);
       res.redirect("/");
     }
