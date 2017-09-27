@@ -20,11 +20,7 @@ var hashHistory = router.hashHistory;
 
 // Reference the high-level components
 var Main = require("../components/Main.js");
-var Shelters = require("../components/Shelters.js");
-var Profile = require("../components/Profile.js");
-var Home = require("../components/Home.js");
-var Mappy = require("../components/Map.js");
-var Pawfile = require("../components/Pawfile.js");
+import Login from "../components/Login";
 
 var MuiThemeProvider = require("material-ui/styles").MuiThemeProvider;
 // import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -35,6 +31,7 @@ module.exports = (
   // High level component is the Router component.
   <MuiThemeProvider>
   <Router history={hashHistory}>
+    <Route path="/loginPage" component={Login} />
     <Route path="/" component={Main}>
         <Route path="/profile" component={Profile} />
         <Route path="/pawfile" component={Pawfile} />
@@ -42,6 +39,7 @@ module.exports = (
         <Route path="/map" component={Mappy} />
         <IndexRoute component={Home} />
     </Route>
+
   </Router>
   </MuiThemeProvider>
 );
