@@ -3,16 +3,16 @@ import axios from "axios";
 const helper = {
 
   //route to create user
-  makeUser: function(name, username, email, password) {
-    var body = {name, username, email, password};
+  makeUser: function(newUser) {
+    var body = newUser;
     return axios.post("/api/users", body).then(data => {
       console.log("new user data: "+data);
       return data;
     });
   },
 
-  makeShelter: function(name, address, email, password) {
-    var body = {name, address, email, password};
+  makeShelter: function(newShelter) {
+    var body = newShelter;
     return axios.post("/api/shelters", body).then(data => {
       console.log("new shelter data: "+data);
       return data;
