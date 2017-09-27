@@ -78,17 +78,19 @@ app.get("/api/shelters/:id", function(req, res) {
 
 // API route to validate password on user logins
 app.post("/api/user/login", function(req, res) {
+  console.log("req body: "+req.body);
   db.User.findOne({where: {
     email: req.body.email
   }
   }).then(function(data) {
+    console.log("data from db:"+data);
     if (data === null) {
-      res.json({username: true});
-    } else {
+      res.json({email: true});
+    }
+    else if(bcrypt.compareSync(req.body.password, data.password))
+    {
       res.cookie("UserId", data.id);
-      res.json({
-        password: bcrypt.compareSync(req.body.password, data.password)
-      });
+      res.redirect("/");
     }
   });
 });

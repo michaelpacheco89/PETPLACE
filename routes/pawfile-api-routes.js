@@ -14,10 +14,10 @@ module.exports = function(app) {
   });
 
   //route for finding all of a single user's pawfiles
-  app.get("/api/pawfiles/:userId", (req, res)=> {
+  app.get("/api/pawfiles/", (req, res)=> {
     db.Pawfile.findAll({
       where:{
-        UserId: req.params.userId
+        UserId: req.cookies.UserId
       },
       include:[{model:db.Posts}]
     }).then(data => {
