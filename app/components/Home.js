@@ -18,6 +18,10 @@ var Home = React.createClass({
     },
 
     render: function() {
+        // var listPosts = data.map((Post) =>
+        //     {Post}
+        // );
+
         return (
             <div>
                 <Submit />

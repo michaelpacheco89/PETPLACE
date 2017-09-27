@@ -13,6 +13,9 @@ var Main = React.createClass({
         loggedin: false
       };
   },
+  componentDidUpdate: function() {
+  },
+
   logToggle: function(data) {
       this.setState({loggedin: data});
   },
@@ -23,7 +26,7 @@ var Main = React.createClass({
             {/* <!-- HEADER --> */}
             <div className="parallax-container">
                 <div className="parallax"><img src="assets/images/tracks.jpg" /></div>
-                <h2 className="header">SCATCHAT<i className="material-icons">pets</i></h2>
+                <h2 className="header">herdIt<i className="material-icons">pets</i></h2>
             </div>
 
             {/* <!-- BODY --> */}
@@ -38,7 +41,7 @@ var Main = React.createClass({
 
             <footer className="page-footer">
                 <div className="container">
-                    <div className="row"> CONTENT TBD
+                    <div className="row">
                     </div>
                 </div>
 
