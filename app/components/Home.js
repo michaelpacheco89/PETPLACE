@@ -6,8 +6,25 @@ var Submit = require("../components/Submit.js");
 var Home = React.createClass({
     getInitialState: function() {
         return {
-            liked: false
+            // api call to database to pull data of posts and set as state
+            data: [
+                {
+                    key: 0,
+                    img: "assets/images/cat1.jpg",
+                    text: "this is the first post",
+                    liked: false
+                },
+                {
+                    key: 1,
+                    img: "assets/images/cat1.jpg",
+                    text: "here is another post wooo ya",
+                    liked: false
+                }
+            ]
         }
+    },
+    likeToggle: function(like, key) {
+        this.setState({liked: like});
     },
     componentDidMount: function() {
         //console.log(this.state.liked);
@@ -18,14 +35,10 @@ var Home = React.createClass({
     },
 
     render: function() {
-        // var listPosts = data.map((Post) =>
-        //     {Post}
-        // );
-
         return (
             <div>
                 <Submit />
-                <Post />
+                <Post setParent={this.likeToggle} data={this.state.data} />
             </div>
         );
     }
