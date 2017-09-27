@@ -32,8 +32,7 @@ var Submit = React.createClass({
     render: function() {
 
     return (
-
-            <div className="submit col s12 m5 offset-m2">
+            <div className="submit col s12 l8 offset-l2">
                 <form onSubmit={this.handleSubmit} encType="multipart/form-data" action="api/uploadImg/" method="POST">
                     <div>
                         <div className="input-field">
@@ -43,19 +42,21 @@ var Submit = React.createClass({
                     </div>
 
                     <div className="file-field input-field">
-                        <div className="btn">
+                        <div className="btn btn-floating">
                             <span><i className="material-icons">add</i></span>
                             <input name="photo" type="file" />
                         </div>
 
                         <div className="file-path-wrapper">
-                            <input className="file-path validate" type="text" />
+                            <input id="photo" className="file-path validate" type="text" />
+                            <label htmlFor="photo"> Add a Photo</label>
                         </div>
                     </div>
-                    <button type="submit" className="btn">Submit</button>
+                    <div>
+                        <button type="submit" className="btn">Submit</button>
+                    </div>
                 </form>
             </div>
-
     );
   }
 });

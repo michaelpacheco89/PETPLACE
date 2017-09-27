@@ -1,5 +1,7 @@
 import React, {Component} from "react";
 import helper from "../config/helper";
+import Signup from "../components/signup.js";
+import ShelterSignup from "../components/shelsignup.js";
 
 class Login extends Component
 {
@@ -43,24 +45,37 @@ class Login extends Component
   render()
   {
     return (
+    <div>
         <div className="row">
-          <form className="col s12">
-            <div className="row">
-              <div className="input-field col s12">
-                <input value={this.state.email} onChange={this.handleInputChange} id="email" type="email" className="validate"/>
-                <label htmlFor="email">Email</label>
-              </div>
-            </div>
-            <div className="row">
-              <div className="input-field col s12">
-                <input value={this.state.password} onChange={this.handleInputChange} id="password" type="password" className="validate"/>
-                <label htmlFor="password">Password</label>
-              </div>
-            </div>
-            <button className="btn btn-default"
-                    onClick={this.handleButtonClick}>Submit</button>
-          </form>
+            <form className="col s12 l5 offset-l3">
+                <div>
+                    <h5> Sign In </h5>
+
+                    <div className="input-field">
+                        <input value={this.state.email} onChange={this.handleInputChange} id="email" type="email" className="validate"/>
+                        <label htmlFor="email">Email</label>
+                    </div>
+                </div>
+
+                <div>
+                    <div className="input-field">
+                        <input value={this.state.password} onChange={this.handleInputChange} id="password" type="password" className="validate"/>
+                        <label htmlFor="password">Password</label>
+                    </div>
+                </div>
+
+                <button className="btn btn-default" onClick={this.handleButtonClick}>Submit</button>
+            </form>
         </div>
+        <div className="row">
+            <div className="col s12 l4 offset-l2">
+                <Signup />
+            </div>
+            <div className="col s12 l4">
+                <ShelterSignup />
+            </div>
+        </div>
+    </div>
     );
   }
 }
