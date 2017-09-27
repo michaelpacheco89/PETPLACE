@@ -78,10 +78,12 @@ app.get("/api/shelters/:id", function(req, res) {
 
 // API route to validate password on user logins
 app.post("/api/user/login", function(req, res) {
+  console.log("req body: "+req.body);
   db.User.findOne({where: {
     email: req.body.email
   }
   }).then(function(data) {
+    console.log("data from db:"+data);
     if (data === null) {
       res.json({email: true});
     }

@@ -26,7 +26,7 @@ const helper = {
     var body = {email, password};
     console.log(body);
     return axios.post("/api/user/login", body).then(data => {
-      console.log("validation data: "+ data);
+      console.log("validation data: "+ data.data);
       return data;
     });
   },
