@@ -87,7 +87,7 @@ const helper = {
 
   //route to add picture
   addPic: function(imageFile) {
-    return axios.post("/api/uploadImg", {"photo":imageFile}).then(data => {
+    return axios.post("/api/uploadImg", {photo:imageFile}).then(data => {
       console.log("picture data: "+data);
       return data;
     });
@@ -95,8 +95,7 @@ const helper = {
 
   //route to create text post
   addPost: function(post) {
-    var body = {post};
-    return axios.post("/api/sendTextPost", body).then(data => {
+    return axios.post("/api/sendTextPost", {post: post}).then(data => {
       console.log("text post data: "+data);
       return data;
     });
