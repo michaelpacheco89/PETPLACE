@@ -10,7 +10,7 @@ body {
     font-family: 'Sigmar One', cursive;
     text-align: center;
     padding-top: 150px;
-    font-size: 80px;
+    font-size: 100px;
     color: #5bb3d3;
 }
 .page-footer,
@@ -23,6 +23,10 @@ body {
     background-color: #5bb3d3;
 }
 
+.comment-btn {
+    float: right;
+}
+
 .post {
     color: grey;
     background-color: white, #bb96f2;
@@ -33,11 +37,12 @@ body {
 .submit {
     background-color: lightgrey;
     color: grey;
-    border-radius: 5px;
+    border-radius: 15px;
+    border: 10px solid grey;
 }
 
 .sidebar {
-
+    color: grey;
 
 }
 .avatar {
@@ -62,8 +67,4 @@ body {
 
 main {
   flex: 1 0 auto;
-}
-
-h4 {
-    color: grey;
 }

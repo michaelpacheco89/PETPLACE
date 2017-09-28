@@ -28,8 +28,8 @@ var Shelters = require("../components/Shelters");
 var Mappy = require("../components/Map");
 var Home = require("../components/Home");
 
-import Signup from "../components/signup.js";
-import ShelterSignup from "../components/shelsignup.js";
+
+
 
 var MuiThemeProvider = require("material-ui/styles").MuiThemeProvider;
 // import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -41,9 +41,6 @@ module.exports = (
   <MuiThemeProvider>
   <Router history={hashHistory}>
     {/* ===============sign up and log in routes============= */}
-    <Route path="/loginPage" component={Login} />
-    <Route path="/user/signup" component={Signup} />
-    <Route path="/shelter/signup" component={ShelterSignup} />
     <Route path="/pawfile/create" component={makePawfile} />
     {/* ======================================================= */}
     <Route path="/" component={Main}>
@@ -51,6 +48,7 @@ module.exports = (
         <Route path="/pawfile" component={Pawfile} />
         <Route path="/shelters" component={Shelters} />
         <Route path="/map" component={Mappy} />
+        <Route path="/login" component={Login} />
         <IndexRoute component={Home} />
         </Route>
 

@@ -28,7 +28,6 @@ var NavBar = React.createClass({
     render: function() {
         if (!this.state.loggedin) {
             return (
-            <div className="row">
                 <div className="sidebar col s12 l2">
                     <h4> Navigate </h4>
                     <List>
@@ -36,15 +35,15 @@ var NavBar = React.createClass({
                             <Divider />
                         <Link to="/shelters"><ListItem primaryText="Explore Shelters" leftIcon={<NearMe />} /></Link>
                             <Divider />
-                        <Link to="/login" onClick={this.logToggle}><ListItem primaryText="Log In" leftIcon={<ContentInbox />} /></Link>
+                        <Link to="/login"><ListItem primaryText="Log In" leftIcon={<ContentInbox />} /></Link>
                     </List>
                 </div>
-            </div>
+
             );
         }
         else {
             return (
-            <div className="row">
+
                 <div className="sidebar col s12 l2">
                     <h4> Navigate </h4>
                     <List>
@@ -55,10 +54,10 @@ var NavBar = React.createClass({
                         <Link to="/profile"><ListItem primaryText="Profile" leftIcon={<NearMe />} /></Link>
                             <Divider />
                         <Link to="/map"><ListItem primaryText="Map" leftIcon={<NearMe />} /></Link>
-                        <Link to="/" onClick={this.logToggle}><ListItem primaryText="Log Out" leftIcon={<ContentInbox />} /></Link>
+                        <Link to="/" ><ListItem primaryText="Log Out" leftIcon={<ContentInbox />} /></Link>
                     </List>
                 </div>
-            </div>
+        
             );
         }
 

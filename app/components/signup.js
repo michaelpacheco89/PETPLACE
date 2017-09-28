@@ -46,6 +46,7 @@ class Signup extends Component{
   render(){
     return(
       <div className="row">
+         <h5> Create a Personal Account </h5>
         <form className="col s12">
         <div className="row">
           <div className="input-field col s6">

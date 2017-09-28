@@ -26,13 +26,15 @@ var Main = React.createClass({
             {/* <!-- HEADER --> */}
             <div className="parallax-container">
                 <div className="parallax"><img src="assets/images/tracks.jpg" /></div>
-                <h2 className="header">herdIt<i className="material-icons">pets</i></h2>
+                <h1 className="header">herdIt<i className="material-icons">pets</i></h1>
             </div>
 
             {/* <!-- BODY --> */}
             <div className="row section white">
                 <NavBar setParent={this.logToggle}/>
-                {this.props.children}
+                <div className="col l10">
+                    {this.props.children}
+                </div>
             </div>
             {/* <!-- PARALLAX AND FOOTER --> */}
             <div className="parallax-container">
@@ -47,7 +49,7 @@ var Main = React.createClass({
 
                 <div className="footer-copyright">
                     <div className="container">
-                    © 2017 Copyright ScatChat
+                    © 2017 Copyright herdIt
                     </div>
                 </div>
             </footer>
