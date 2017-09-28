@@ -19,6 +19,19 @@ const helper = {
     });
   },
 
+  getUser: function() {
+    return axios.get("/api/users/").then(data => {
+        console.log("User data: "+data);
+        return data;
+    });
+},
+
+getShelter: function() {
+    return axios.get("/api/shelters/").then(data => {
+        console.log("Shelter data: "+data);
+        return data;
+    });
+},
   //route to validate user. If no email is found in the database
   //this will return data.username === true. At this point we want to alert the user the login email was incorrect.
   //if an email is found we will get a true or false from data.password. we will get true if the password matches the encrypted one.
@@ -49,7 +62,7 @@ const helper = {
 
   //route used to login to user pawfile
   findOnePawfile: function(id) {
-    return axios.get("/api/pawfiled/"+id).then(data => {
+    return axios.get("/api/pawfiles/"+id).then(data => {
       console.log("Single pawfile data: "+data);
       return data;
     });

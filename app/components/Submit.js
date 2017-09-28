@@ -78,7 +78,7 @@ var Submit = React.createClass({
                         </div>
                     </div>
                     <div>
-                        <button type="submit" className="btn">Submit</button>
+                        <button type="submit" className="btn submit-btn">Submit</button>
                     </div>
                 </form>
             </div>

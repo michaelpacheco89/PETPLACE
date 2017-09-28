@@ -4,7 +4,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        isAlpha: true,
+        // isAlpha: true,
         len: [1]
       }
     },
