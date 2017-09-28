@@ -15,13 +15,13 @@ module.exports = function(app) {
 
   //route for finding all of a single user's pawfiles
   app.get("/api/user/pawfiles/", (req, res)=> {
+    console.log(req.cookies.UserId);
     db.Pawfile.findAll({
+      include:[{model:db.Post}],
       where:{
         UserId: req.cookies.UserId
-      },
-      include:[{model:db.Posts}]
+      }
     }).then(data => {
-      console.log(data);
       res.json(data)
     });
   });
@@ -29,10 +29,10 @@ module.exports = function(app) {
 //find ONE pawfile
 app.get("/api/pawfiles/:id",function(req,res){
   db.Pawfile.findOne({
+    include:[{model: db.Post}],
     where:{
       id:req.params.id
-    },
-    include:[{model: db.Posts}]
+    }
   }).then(function(data){
     res.json(data);
   });

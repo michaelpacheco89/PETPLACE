@@ -41,9 +41,8 @@ const helper = {
   },
 
   //route to find a single user's pawfiles
-  findUserPawfiles: function(userId) {
+  findUserPawfiles: function() {
     return axios.get("/api/user/pawfiles/").then(data => {
-      console.log("Users pawfile data: "+data);
       return data;
     });
   },

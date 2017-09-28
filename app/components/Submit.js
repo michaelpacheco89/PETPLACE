@@ -22,6 +22,8 @@ var Submit = React.createClass({
     handleSubmit: function(event) {
         event.preventDefault();
         console.log("pushed the button");
+        console.log(this.state.photo);
+        console.log(this.state.message);
         if(this.state.message !== "" && this.state.photo !== "")
         {
           //make a new route that adds text and photo at same time.
