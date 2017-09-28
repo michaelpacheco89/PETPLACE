@@ -11,22 +11,22 @@ var Link = require("react-router").Link;
 var NavBar = React.createClass({
     getInitialState: function() {
         return {
-            loggedin: false
+
         }
     },
 
     componentDidUpdate: function() {
+
     },
 
-    logToggle: function(event) {
-        event.preventDefault();
-        var data = !this.state.loggedin;
-        this.setState({loggedin: !this.state.loggedin});
-        this.props.setParent(data);
+    clearCookies: function() {
+      document.cookie = "UserId=''; expires=Thu, 18 Dec 2002 12:00:00 UTC; path=/ ";
+      document.cookie = "pawfileId=''; expires=Thu, 18 Dec 2002 12:00:00 UTC; path=/ ";
+      window.location = "/";
     },
 
     render: function() {
-        if (!this.state.loggedin) {
+        if (!document.cookie) {
             return (
                 <div className="sidebar col s12 l2">
                     <h4> Navigate </h4>
@@ -54,7 +54,7 @@ var NavBar = React.createClass({
                         <Link to="/profile"><ListItem primaryText="Profile" leftIcon={<NearMe />} /></Link>
                             <Divider />
                         <Link to="/map"><ListItem primaryText="Map" leftIcon={<NearMe />} /></Link>
-                        <Link to="/" ><ListItem primaryText="Log Out" leftIcon={<ContentInbox />} /></Link>
+                        <Link to="/" onClick={this.clearCookies}><ListItem primaryText="Log Out" leftIcon={<ContentInbox />} /></Link>
                     </List>
                 </div>
 

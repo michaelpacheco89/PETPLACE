@@ -33,14 +33,14 @@ app.get("/api/shelters", function(req, res) {
 });
 
 // API route to find user by id(optional)
-app.get("/api/users/:id", function(req, res) {
+app.get("/api/users/", function(req, res) {
   //checking to see if username exists for signup
   var query = {};
   // console.log(req.query.username);
   if (req.query.username || req.query.email) {
     query = req.query;
   } else {
-    query.id = req.params.id;
+    query.id = req.cookies.UserId;
   }
   db.User.findOne({
     where: query && {
@@ -55,14 +55,14 @@ app.get("/api/users/:id", function(req, res) {
 });
 
 // API route to find shelter by id(optional)
-app.get("/api/shelters/:id", function(req, res) {
+app.get("/api/shelters/", function(req, res) {
   //checking to see if username exists for signup
   var query = {};
   // console.log(req.query.username);
   if (req.query.name || req.query.email) {
     query = req.query;
   } else {
-    query.id = req.params.id;
+    query.id = req.cookies.UserId;
   }
   db.User.findOne({
     where: query && {
