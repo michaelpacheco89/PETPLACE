@@ -26,7 +26,7 @@ var Profile = React.createClass({
             <div className="card">
                 <div className="card-image">
                     {/* add image here */}
-                    <img src="assets/images/cat1.jpg" />
+                    <img src={item.profPic}   {/*"assets/images/cat1.jpg"*/} />
                     <span className="card-title">{item.name}</span>
                 </div>
                 <div className="card-content">
@@ -53,7 +53,7 @@ var Profile = React.createClass({
                         <Link to="/pawfile"><div className="pawcard">
                             <div className="card">
                                 <div className="card-image">
-                                    <img src={item.img} />    
+                                    <img src={item.img} />
                                 </div>
                                 <div className="card-content">
                                     <span className="card-title">{item.name}</span>

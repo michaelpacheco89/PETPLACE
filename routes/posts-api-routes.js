@@ -63,19 +63,18 @@ module.exports = function(app) {
   });
 
   //route to retrieve the profile Pic for a pawfile
-  app.get("/api/profilePic", (req, res) => {
-    //looks for a picture with a matching pawfileId
-    //and where isProfile is true.
-    //this route is intended to be used to load profile Pic
-    db.Post.findOne({
-      where: {
-        PawfileId: req.cookies.pawfileId,
-        isProfile: true
-      }
-    }).then(results => {
-      res.json(results);
-    });
-  });
+  // app.get("/api/profilePic", (req, res) => {
+  //   //looks for a picture with a matching pawfileId
+  //   //and where isProfile is true.
+  //   //this route is intended to be used to load profile Pic
+  //   db.Post.findOne({
+  //     where: {
+  //       PawfileId: req.cookies.pawfileId
+  //     }
+  //   }).then(results => {
+  //     res.json(results);
+  //   });
+  // });
 // ================
 // route for clicking the LIKE BTN
   app.post("/api/likePost/:id", (req,res) =>{
@@ -109,26 +108,24 @@ app.post("/api/unlikePost/:id", (req,res) =>{
 });
 // =================
   //route to update profile picture
-  app.post("/api/changeProfilePic/:picId", (req, res) =>{
+  app.post("/api/changeProfilePic/:postId", (req, res) =>{
     //first it updates the current profile picture
     //to make it not a prof pic.
-    console.log("pic link: "+ req.params.picId);
-    db.Post.update({
-        isProfile: false
-      },
+    console.log("pic link: "+ req.params.postId);
+    db.Post.findOne(
       {
         where: {
-          PawfileId: req.cookies.pawfileId,
-          isProfile: true
+          id: req.params.postId
         }
       }).then( results => {
+        console.log(results);
         //then makes the new pic the prof pic
-      db.Post.update({
-        isProfile: true
+      db.Pawfile.update({
+      profPic  : results.picContent
       },
       {
         where: {
-          id: req.params.picId
+          id: req.cookies.pawfileId
         }
       }).then( data => {
         console.log(data);

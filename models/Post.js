@@ -12,11 +12,6 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: true,
     },
-    isProfile: {
-      type: DataTypes.BOOLEAN,
-      allowNull: true,
-      defaultValue: false
-    },
     likes: {
       type: DataTypes.INTEGER,
       allowNull: true,

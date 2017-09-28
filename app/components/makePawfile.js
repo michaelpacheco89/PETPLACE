@@ -32,6 +32,7 @@ class makePawfile extends Component
       breed: this.state.breed,
       sex: this.state.sex,
       age: this.state.age
+      //need to add pic here, will figure out tomorrow.
     };
 
     helper.makePawfile(newPawfile).then(data => {
