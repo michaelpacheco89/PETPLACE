@@ -6,7 +6,7 @@ var Post = React.createClass({
     },
 
     componentDidUpdate: function() {
-        
+
     },
 
     likeClick: function(event) {
@@ -24,7 +24,9 @@ var Post = React.createClass({
                      <div key={item.id} className="post">
                          <div className="card">
                              <div className="card-header activator">
-                                <img src="assets/images/anon.jpg" className="avatar circle" />
+
+                                <img src={item.Pawfile.profPic} className="avatar circle" />
+
                              </div>
 
                              <div className="card-image">
