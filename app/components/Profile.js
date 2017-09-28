@@ -6,7 +6,22 @@ import helper from "../config/helper";
 var Profile = React.createClass({
     getInitialState: function() {
         return {
-          
+            data: [
+                {
+                    key: 0,
+                    img: "assets/images/cat1.jpg",
+                    name: "Fluffy",
+                    active: true
+                },
+                {
+                    key: 1,
+                    img: "assets/images/pig1.jpg",
+                    name: "Chris P. Bacon",
+                    active: false
+
+                }
+            ]
+
         }
     },
     componentWillMount: function() {
@@ -25,38 +40,27 @@ var Profile = React.createClass({
     },
 
     render: function() {
-
         return (
-        <div className="outerdiv">
-            <div className="row">
-                <Link to="/pawfile"><div className=" pawcard col l2 s12 offset-s1">
-                    <div className="card">
-                        <div className="card-image">
-                            <img src="assets/images/cat1.jpg" />
-                            <span className="card-title">Pawfile #1</span>
-                        </div>
-                        <div className="card-content">
-                            <button className="btn">Active</button>
-                            <button className="btn">View</button>
-                        </div>
+            <div className="col s12 l4">
+                {this.state.data.map(item => (
+                    <div key={item.key}>
+                        <Link to="/pawfile"><div className="pawcard">
+                            <div className="card">
+                                <div className="card-image">
+                                    <img src={item.img} />    
+                                </div>
+                                <div className="card-content">
+                                    <span className="card-title">{item.name}</span>
+                                    <button className="btn">Active</button>
+                                    <button className="btn">View</button>
+                                </div>
+                            </div>
+                        </div></Link>
                     </div>
-                </div></Link>
+                ))}
 
-                <Link to="/pawfile"><div className=" pawcard col l2 s12 offset-s1">
-                    <div className="card">
-                        <div className="card-image">
-                            <img src="assets/images/cat1.jpg" />
-                            <span className="card-title">Pawfile #2</span>
-                        </div>
-                        <div className="card-content">
-                            <button className="btn">Active</button>
-                            <button className="btn">View</button>
-                        </div>
-                    </div>
-                </div></Link>
-            </div>
 
-            <div className="userprofholder col s10 offset-s2">
+            <div className="userprofholder">
                 Username:
                 other info here
             </div>

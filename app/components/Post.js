@@ -24,7 +24,7 @@ var Post = React.createClass({
                          <div className="card">
 
                              <div className="card-header activator">
-                                <img src="assets/images/cat1.jpg" className="avatar circle" />
+                                <img src="assets/images/anon.jpg" className="avatar circle" />
                              </div>
 
                              <div className="card-image">

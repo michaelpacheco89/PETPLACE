@@ -16,7 +16,7 @@ var Home = React.createClass({
                 },
                 {
                     key: 1,
-                    img: "assets/images/cat1.jpg",
+                    img: "assets/images/pig1.jpg",
                     text: "here is another post wooo ya",
                     liked: false
                 }
