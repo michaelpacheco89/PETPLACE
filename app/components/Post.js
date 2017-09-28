@@ -25,18 +25,21 @@ var Post = React.createClass({
         return (
             <div className="col offset-s4">
                 {this.props.data.map(item => (
-                     <div key={item.key} className="post col s12 m8">
+
+                  // use item.id which is the postId
+                     <div key={item.id} className="post col s12 m8">
                          <div className="card">
                              <div className="card-header">
-                                <img src="assets/images/cat1.jpg" className="avatar circle" />
+                                <img src="assets/images/cat1.jp" className="avatar circle" />
                              </div>
                              <div className="card-image">
                                  {/* pull image source from this.props.data */}
-                                 <img src={item.img} />
-                                 {item.liked ? (<a href="#" onClick={this.likeClick} className="btn-floating halfway-fab waves-effect waves-light red"><i className="material-icons">favorite</i></a>) : (<a href="#" onClick={this.likeClick} className="btn-floating halfway-fab waves-effect waves-light red"><i className="material-icons">favorite_border</i></a>)}
+                                 <img src={item.picContent} />
+                                 {item.likes ? (<a href="#" onClick={this.likeClick} className="btn-floating halfway-fab waves-effect waves-light red"><i className="material-icons">favorite</i></a>) : (<a href="#" onClick={this.likeClick} className="btn-floating halfway-fab waves-effect waves-light red"><i className="material-icons">favorite_border</i></a>)}
                              </div>
                              <div className="card-content">
-                                 <p>{item.text}</p>
+                                 <p>{item.textContent}</p>
+
                              </div>
                              <div>
                                  {/* comments area */}

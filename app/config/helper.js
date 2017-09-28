@@ -41,9 +41,8 @@ const helper = {
   },
 
   //route to find a single user's pawfiles
-  findUserPawfiles: function(userId) {
+  findUserPawfiles: function() {
     return axios.get("/api/user/pawfiles/").then(data => {
-      console.log("Users pawfile data: "+data);
       return data;
     });
   },
@@ -87,7 +86,7 @@ const helper = {
 
   //route to add picture
   addPic: function(imageFile) {
-    return axios.post("/api/uploadImg", {"photo":imageFile}).then(data => {
+    return axios.post("/api/uploadImg", {photo:imageFile}).then(data => {
       console.log("picture data: "+data);
       return data;
     });
@@ -95,8 +94,7 @@ const helper = {
 
   //route to create text post
   addPost: function(post) {
-    var body = {post};
-    return axios.post("/api/sendTextPost", body).then(data => {
+    return axios.post("/api/sendTextPost", {post: post}).then(data => {
       console.log("text post data: "+data);
       return data;
     });
