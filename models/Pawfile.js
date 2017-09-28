@@ -43,6 +43,12 @@ module.exports = function(sequelize, DataTypes) {
         // isNumeric: true,
         len: [1]
       }
+    },
+
+    profPic: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: "public/assets/images/cat1.png"
     }
 
     });
