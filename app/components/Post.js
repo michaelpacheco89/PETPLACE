@@ -24,11 +24,13 @@ var Post = React.createClass({
                      <div key={item.id} className="post">
                          <div className="card">
                              <div className="card-header activator">
+
                                 {item.Pawfile.profPic ?
                                 (<img src={item.Pawfile.profPic} className="avatar circle" />)
                                 :
                                 (<img src="/assets/images/anon.jpg" className="avatar circle" />)
                                 }
+
                              </div>
 
                              <div className="card-image">

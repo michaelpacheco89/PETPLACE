@@ -25,6 +25,8 @@ var Profile = React.createClass({
 
     },
 
+
+
     //this handles a pawfile being set as active.
     handleClick: function(key) {
       helper.setCookie(key).then(results => {
