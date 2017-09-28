@@ -6,27 +6,13 @@ import helper from "../config/helper";
 var Profile = React.createClass({
     getInitialState: function() {
         return {
-            data: [
-                {
-                    key: 0,
-                    img: "assets/images/cat1.jpg",
-                    name: "Fluffy",
-                    active: true
-                },
-                {
-                    key: 1,
-                    img: "assets/images/pig1.jpg",
-                    name: "Chris P. Bacon",
-                    active: false
-
-                }
-            ]
-
+          pawfiles: []
         }
     },
     componentWillMount: function() {
-      helper.findUserPawfiles().then(data => {
-        console.log(data);
+      helper.findUserPawfiles().then(result => {
+        this.setState({pawfiles: result.data});
+        console.log(this.state.pawfiles);
       });
     },
 
@@ -34,9 +20,29 @@ var Profile = React.createClass({
 
     },
 
+    renderPawfile: function() {
+      this.state.pawfiles.map(item => {
+        <Link to="/pawfile"><div className=" pawcard col l2 s12 offset-s1">
+            <div className="card">
+                <div className="card-image">
+                    {/* add image here */}
+                    <img src="assets/images/cat1.jpg" />
+                    <span className="card-title">{item.name}</span>
+                </div>
+                <div className="card-content">
+                    <button className="btn" key={item.id} onClick={this.handleClick}>Active</button>
+                    <button className="btn">View</button>
+                </div>
+            </div>
+        </div></Link>
+      });
+    },
+
     //this handles a pawfile being set as active.
     handleClick: function() {
-
+      helper.setCookie(/*put key from button here*/).then(results => {
+        console.log(results);
+      });
     },
 
     render: function() {

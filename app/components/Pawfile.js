@@ -1,15 +1,26 @@
 var React = require("react");
 var Link = require("react-router").Link;
-
+import helper from "../config/helper";
 
 var Pawfile = React.createClass({
     getInitialState: function() {
         return {
-
+          data: []
         }
     },
-    componentDidMount: function() {
+    componentWillMount: function() {
+      //need to pass a prop from profile that has pawfileId inside.
+      helper.getPawfileFeed(this.props.id).then( results => {
+        console.log(results);
+        this.setState({data: results.data});
+      });
+    },
 
+    renderPawfile: function() {
+      //here we should use a map from the helper to load the pawfile posts and stuff.
+      this.state.data.map(item => {
+
+      });
     },
 
     componentDidUpdate: function() {
@@ -17,6 +28,7 @@ var Pawfile = React.createClass({
     },
 
     render: function() {
+      //should return {this.renderPawfile} here.
         return (
             <div className="pawprofholder col s10 offset-s2">
                 <Link to="/profile"><button className="btn"> Back to Profile </button></Link>

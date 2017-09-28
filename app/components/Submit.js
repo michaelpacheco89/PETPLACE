@@ -3,13 +3,13 @@ var React = require("react");
 // Including the Link component from React Router to navigate within our application without full page reloads
 // https://github.com/ReactTraining/react-router/blob/master/docs/API.md#link
 var Link = require("react-router").Link;
-
+import helper from "../config/helper";
 // Create the Main component
 var Submit = React.createClass({
     getInitialState: function() {
       return {
         message: "",
-        file: ""
+        photo: ""
       };
     },
 
@@ -21,7 +21,25 @@ var Submit = React.createClass({
 
     handleSubmit: function(event) {
         event.preventDefault();
-        //console.log(this.state);
+        console.log("pushed the button");
+        console.log(this.state.photo);
+        console.log(this.state.message);
+        if(this.state.message !== "" && this.state.photo !== "")
+        {
+          //make a new route that adds text and photo at same time.
+        }
+        else if(this.state.message !== "")
+        {
+            helper.addPost(this.state.message).then(data => {
+              console.log(data);
+            });
+        }
+        else if(this.state.photo !== "")
+        {
+          helper.addPic(this.state.photo).then(data => {
+            console.log(data);
+          });
+        }
         this.setState({message: "", file: ""});
     },
 
@@ -36,7 +54,7 @@ var Submit = React.createClass({
                 <form onSubmit={this.handleSubmit} encType="multipart/form-data" action="api/uploadImg/" method="POST">
                     <div>
                         <div className="input-field">
-                            <input id="message" type="text" value={this.state.search} onChange={this.handleChange} />
+                            <input id="message" type="text" value={this.state.message} onChange={this.handleChange} />
                             <label htmlFor="message">What's Up?</label>
                         </div>
                     </div>

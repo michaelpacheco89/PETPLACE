@@ -57,9 +57,6 @@ module.exports = function(sequelize, DataTypes) {
 
     //adds association to Pictures table
     Pawfile.hasMany(models.Post, {
-      foreignKey:{
-        allowNull: true
-      },
       onDelete: "cascade"
     });
 

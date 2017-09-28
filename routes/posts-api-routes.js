@@ -156,6 +156,7 @@ app.post("/api/unlikePost/:id", (req,res) =>{
   //route for making and sending new text post to db
   app.post("/api/sendTextPost", (req, res) => {
       //req.body.post should be content of post.
+      console.log(req.cookies.pawfileId);
       db.Post.create({
           textContent: req.body.post,
           PawfileId: req.cookies.pawfileId
