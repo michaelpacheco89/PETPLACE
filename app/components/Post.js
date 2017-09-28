@@ -25,6 +25,7 @@ var Post = React.createClass({
         return (
             <div className="col offset-s4">
                 {this.props.data.map(item => (
+
                   // use item.id which is the postId
                      <div key={item.id} className="post col s12 m8">
                          <div className="card">
@@ -38,6 +39,7 @@ var Post = React.createClass({
                              </div>
                              <div className="card-content">
                                  <p>{item.textContent}</p>
+
                              </div>
                              <div>
                                  {/* comments area */}

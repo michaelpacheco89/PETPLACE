@@ -26,6 +26,7 @@ var Home = React.createClass({
     likeToggle: function(like, key) {
         this.setState({liked: like});
     },
+
     componentWillMount: function() {
         //console.log(this.state.liked);
         helper.getFeed().then(results => {
