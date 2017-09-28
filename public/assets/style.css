@@ -41,6 +41,10 @@ body {
     border: 10px solid grey;
 }
 
+.submit-btn {
+    margin-bottom: 10px;
+}
+
 .sidebar {
     color: grey;
 

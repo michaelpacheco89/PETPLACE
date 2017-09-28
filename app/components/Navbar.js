@@ -57,7 +57,7 @@ var NavBar = React.createClass({
                         <Link to="/" ><ListItem primaryText="Log Out" leftIcon={<ContentInbox />} /></Link>
                     </List>
                 </div>
-        
+
             );
         }
 
