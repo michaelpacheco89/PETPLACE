@@ -10,15 +10,12 @@ import NavBar from "../components/Navbar.js";
 var Main = React.createClass({
   getInitialState: function() {
       return {
-        loggedin: false
+
       };
   },
   componentDidUpdate: function() {
   },
 
-  logToggle: function(data) {
-      this.setState({loggedin: data});
-  },
   render: function() {
 
     return (
@@ -31,7 +28,7 @@ var Main = React.createClass({
 
             {/* <!-- BODY --> */}
             <div className="row section white">
-                <NavBar setParent={this.logToggle}/>
+                <NavBar />
                 <div className="col l10">
                     {this.props.children}
                 </div>

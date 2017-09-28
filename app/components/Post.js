@@ -6,7 +6,7 @@ var Post = React.createClass({
     },
 
     componentDidUpdate: function() {
-        console.log(this.props);
+
     },
 
     likeClick: function(event) {
@@ -24,7 +24,11 @@ var Post = React.createClass({
                      <div key={item.id} className="post">
                          <div className="card">
                              <div className="card-header activator">
-                                <img src={item.Pawfile.profPic}  {/*"assets/images/anon.jp"*/} className="avatar circle" />
+                                {item.Pawfile.profPic ?
+                                (<img src={item.Pawfile.profPic} className="avatar circle" />)
+                                :
+                                (<img src="/assets/images/anon.jpg" className="avatar circle" />)
+                                }
                              </div>
 
                              <div className="card-image">

@@ -4,7 +4,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        isAlpha: true,
+        // isAlpha: true,
         len: [1]
       }
     },
@@ -48,7 +48,7 @@ module.exports = function(sequelize, DataTypes) {
     profPic: {
       type: DataTypes.STRING,
       allowNull: false,
-      defaultValue: "public/assets/images/cat1.png"
+      defaultValue: "/assets/images/anon.jpg"
     }
 
     });

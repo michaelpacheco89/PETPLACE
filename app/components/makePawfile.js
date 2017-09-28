@@ -37,18 +37,22 @@ class makePawfile extends Component
 
     helper.makePawfile(newPawfile).then(data => {
       console.log(data);
+      window.location.assign("/profile");
+      //this doesnt work :(
     });
   }
 
   render()
   {
     return (
+    <div className="col s 12 l8 offset-l2">
         <div className="row">
+            <h5> Create a new Pawfile </h5>
           <form className="col s12">
             <div className="row">
               <div className="input-field col s12">
                 <input value={this.state.name} onChange={this.handleInputChange} id="name" type="text" className="validate"/>
-                <label htmlFor="name">Name</label>
+                <label htmlFor="name"> Pet Name</label>
               </div>
             </div>
             <div className="row">
@@ -66,7 +70,7 @@ class makePawfile extends Component
             <div className="row">
               <div className="input-field col s12">
                 <input value={this.state.sex} onChange={this.handleInputChange} id="sex" type="text" className="validate"/>
-                <label htmlFor="sex">Sex</label>
+                <label htmlFor="sex">Gender</label>
               </div>
             </div>
             <div className="row">
@@ -75,10 +79,10 @@ class makePawfile extends Component
                 <label htmlFor="age">Age</label>
               </div>
             </div>
-            <button className="btn btn-default"
-                    onClick={this.handleButtonClick}>Submit</button>
+            <button className="btn btn-default" onClick={this.handleButtonClick}>Submit</button>
           </form>
         </div>
+    </div>
     );
   }
 }

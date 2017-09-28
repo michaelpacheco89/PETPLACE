@@ -7,20 +7,7 @@ var Home = React.createClass({
     getInitialState: function() {
         return {
             // api call to database to pull data of posts and set as state
-            data: [
-                // {
-                //     key: 0,
-                //     img: "assets/images/cat1.jpg",
-                //     text: "this is the first post",
-                //     liked: false
-                // },
-                // {
-                //     key: 1,
-                //     img: "assets/images/cat1.jpg",
-                //     text: "here is another post wooo ya",
-                //     liked: false
-                // }
-            ]
+            data: []
         }
     },
     likeToggle: function(like, key) {
@@ -37,7 +24,7 @@ var Home = React.createClass({
     },
 
     componentDidUpdate: function() {
-        //console.log(this.state.liked);
+        
     },
 
     render: function() {
