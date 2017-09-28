@@ -48,7 +48,7 @@ module.exports = function(sequelize, DataTypes) {
     profPic: {
       type: DataTypes.STRING,
       allowNull: false,
-      defaultValue: "public/assets/images/cat1.png"
+      defaultValue: "/assets/images/anon.jpg"
     }
 
     });

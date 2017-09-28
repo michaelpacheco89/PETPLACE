@@ -26,7 +26,7 @@ var Profile = React.createClass({
             <div className="card">
                 <div className="card-image">
                     {/* add image here */}
-                    <img src={item.profPic}   {/*"assets/images/cat1.jpg"*/} />
+                    <img src={item.profPic} />
                     <span className="card-title">{item.name}</span>
                 </div>
                 <div className="card-content">

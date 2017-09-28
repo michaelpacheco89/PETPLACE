@@ -8,8 +8,7 @@ import helper from "../config/helper";
 var Submit = React.createClass({
     getInitialState: function() {
       return {
-        message: "",
-        photo: ""
+        message: ""
       };
     },
 
@@ -17,6 +16,8 @@ var Submit = React.createClass({
       var newState = {};
       newState[event.target.id] = event.target.value;
       this.setState(newState);
+      console.log(this.state.message);
+      console.log(this.state.photo);
     },
 
     handleSubmit: function(event) {
@@ -34,13 +35,19 @@ var Submit = React.createClass({
               console.log(data);
             });
         }
-        else if(this.state.photo !== "")
-        {
-          helper.addPic(this.state.photo).then(data => {
+        //else if(this.state.photo !== "")
+        //{
+          var picData = new FormData();
+          var file = document.getElementById("file").files[0];
+          console.log(file);
+          // this.setState({photo: new FormData().set('photo', file)});
+          picData.set('photo', file);
+          console.log(picData.get("photo"));
+          helper.addPic(picData).then(data => {
             console.log(data);
           });
-        }
-        this.setState({message: "", file: ""});
+        //}
+        //this.setState({message: "", file: new FormData()});
     },
 
     componentDidUpdate: function() {
@@ -62,7 +69,7 @@ var Submit = React.createClass({
                     <div className="file-field input-field">
                         <div className="btn btn-floating">
                             <span><i className="material-icons">add</i></span>
-                            <input name="photo" type="file" />
+                            <input id='file' name="photo" type="file" />
                         </div>
 
                         <div className="file-path-wrapper">

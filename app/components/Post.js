@@ -24,7 +24,7 @@ var Post = React.createClass({
                      <div key={item.id} className="post">
                          <div className="card">
                              <div className="card-header activator">
-                                <img src={item.Pawfile.profPic}  {/*"assets/images/anon.jp"*/} className="avatar circle" />
+                                <img src={item.Pawfile.profPic}  className="avatar circle" />
                              </div>
 
                              <div className="card-image">

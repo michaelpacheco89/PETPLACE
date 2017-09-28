@@ -14,7 +14,7 @@ module.exports = function(app) {
 
   //sets up storage for photo files
   var storage = multer.diskStorage({
-    destination: "../public/assets/images",
+    destination: "./public/assets/images",
     //creates a new filename to be stored in a image folder.
     filename: function(req, file, cb) {
       crypto.pseudoRandomBytes(16, (err, raw) => {
@@ -49,7 +49,7 @@ module.exports = function(app) {
       }
 
       //creates filepath to be saved in database
-      var filePath = `./${req.file.path}`;
+      var filePath = `${req.file.path}`;
       console.log(req.cookies.pawfileId);
       //saves filepath to database.
       db.Post.create({

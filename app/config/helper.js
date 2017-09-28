@@ -86,8 +86,10 @@ const helper = {
 
   //route to add picture
   addPic: function(imageFile) {
-    return axios.post("/api/uploadImg", {photo:imageFile}).then(data => {
-      console.log("picture data: "+data);
+    return axios.post("/api/uploadImg", imageFile, {headers: {
+      'Content-Type': imageFile.type
+    }}).then(data => {
+      console.log("picture data: "+data.data);
       return data;
     });
   },
