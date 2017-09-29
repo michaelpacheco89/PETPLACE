@@ -24,18 +24,16 @@ var Post = React.createClass({
                      <div key={item.id} className="post">
                          <div className="card">
                              <div className="card-header activator">
-
                                 {item.Pawfile.profPic ?
                                 (<img src={item.Pawfile.profPic} className="avatar circle" />)
                                 :
                                 (<img src="/assets/images/anon.jpg" className="avatar circle" />)
                                 }
-
+                                {item.Pawfile.name}
                              </div>
 
                              <div className="card-image">
 
-                                 {/* pull image source from this.props.data */}
                                  <img src={item.picContent} />
                                  {item.likes ?
                                       (<a href="#" onClick={this.likeClick} className="btn-floating halfway-fab waves-effect waves-light red"><i className="material-icons">favorite</i></a>)

@@ -32,6 +32,13 @@ var Pawfile = React.createClass({
                                 </div>
                                 <div className="card-content">
                                     <span className="card-title">{item.name}</span>
+                                        <ul>
+                                            <li>Species: {item.species}</li>
+                                            <li>Breed: {item.breed}</li>
+                                            <li>Gender: {item.sex}</li>
+                                            <li>Age: {item.age}</li>
+                                        </ul>
+
                                     {document.cookie.pawfileid === item.id ? (<button className="btn" key={item.id} onClick={this.handleClick(item.id)}>Active</button>)
                                     :
                                     (<button className="btn" key={item.id} onClick={this.handleClick(item.id)}>Set Active</button>)}
