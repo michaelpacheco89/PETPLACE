@@ -16,38 +16,39 @@ var Submit = React.createClass({
       var newState = {};
       newState[event.target.id] = event.target.value;
       this.setState(newState);
-      console.log(this.state.message);
-      console.log(this.state.photo);
     },
 
     handleSubmit: function(event) {
         event.preventDefault();
-        console.log("pushed the button");
-        console.log(this.state.photo);
-        console.log(this.state.message);
-        if(this.state.message !== "" && this.state.photo !== "")
-        {
-          //make a new route that adds text and photo at same time.
-        }
+        var picData = new FormData();
+        var file = document.getElementById("file").files[0];
+        picData.set('photo', file);
+         if(this.state.message !== "" && file)
+         {
+           helper.addPost(this.state.message).then(results => {
+             helper.addPicWithPost(results.data.id, picData).then(res => {
+               console.log("I hope this worked");
+             });
+           });
+         }
         else if(this.state.message !== "")
         {
+          console.log("make post");
             helper.addPost(this.state.message).then(data => {
               console.log(data);
             });
         }
-        //else if(this.state.photo !== "")
-        //{
-          var picData = new FormData();
-          var file = document.getElementById("file").files[0];
-          console.log(file);
-          // this.setState({photo: new FormData().set('photo', file)});
-          picData.set('photo', file);
+        else if(file)
+        {
           console.log(picData.get("photo"));
           helper.addPic(picData).then(data => {
             console.log(data);
           });
-        //}
-        //this.setState({message: "", file: new FormData()});
+        }
+          // this.setState({photo: new FormData().set('photo', file)});
+
+
+        this.setState({message: ""});
     },
 
     componentDidUpdate: function() {
