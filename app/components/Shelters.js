@@ -17,7 +17,7 @@ var Main = React.createClass({
         }
     },
     componentWillMount: function() {
-    helper.getFeed().then(results => {
+    helper.getShelterFeed().then(results => {
         console.log(results.data);
         this.setState({data: results.data});
     })
@@ -32,12 +32,12 @@ var Main = React.createClass({
                  <div key={item.id} className="post">
                      <div className="card">
                          <div className="card-header activator">
-                            {item.Pawfile.profPic ?
-                            (<img src={item.Pawfile.profPic} className="avatar circle" />)
+                            {item.Pawfiles[0].profPic ?
+                            (<img src={item.Pawfile[0].profPic} className="avatar circle" />)
                             :
                             (<img src="/assets/images/anon.jpg" className="avatar circle" />)
                             }
-                            {item.Pawfile.name}
+                            {item.Pawfiles[0].name}
                          </div>
 
                          <div className="card-image">
