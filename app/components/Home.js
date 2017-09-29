@@ -15,7 +15,7 @@ var Home = React.createClass({
     },
 
     componentWillMount: function() {
-        //console.log(this.state.liked);
+        console.log(this.state.liked);
         helper.getFeed().then(results => {
           console.log(results.data);
           this.setState({data: results.data});
@@ -24,14 +24,20 @@ var Home = React.createClass({
     },
 
     componentDidUpdate: function() {
-        
+
+    },
+    refreshFeed: function(){
+        helper.getFeed().then(results => {
+          console.log(results.data);
+          this.setState({data: results.data});
+        });
     },
 
     render: function() {
         return (
             <div>
-                <Submit />
-                <Post setParent={this.likeToggle} data={this.state.data} />
+                <Submit setParent={this.refreshFeed} />
+                <Post data={this.state.data} />
             </div>
         );
     }

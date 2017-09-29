@@ -51,6 +51,10 @@ var Submit = React.createClass({
         this.setState({message: ""});
     },
 
+    setParent: function() {
+        this.props.setParent();
+    },
+
     componentDidUpdate: function() {
 
     },
@@ -79,7 +83,7 @@ var Submit = React.createClass({
                         </div>
                     </div>
                     <div>
-                        <button type="submit" className="btn submit-btn">Submit</button>
+                        <button onClick={this.setParent} type="submit" className="btn submit-btn">Submit</button>
                     </div>
                 </form>
             </div>
