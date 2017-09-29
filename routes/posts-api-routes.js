@@ -235,20 +235,22 @@ app.post("/api/unlikePost/:id", (req,res) =>{
 
   //route to get feed exclusively for shelters
   app.get("/api/shelterFeed", (req, res) => {
-    db.User.findAll({
+    db.Post.findAll({
       include: [{
         model: db.Pawfile,
+          required: true,
           include:[{
-            model: db.Post
+            model: db.User,
+            required: true,
+            where : {
+              isShelter: true
+            }
         }]
       }],
       order: [
         sequelize.literal("id DESC")
       ],
-      limit: 50,
-      where: {
-        isShelter: true
-      }
+      limit: 50
     }).then(results => {
       res.json(results);
     })
