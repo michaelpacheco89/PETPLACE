@@ -14,11 +14,10 @@ var Pawfile = React.createClass({
 
     },
 
-    handleClick: function(key) {
-      helper.setCookie(key).then(results => {
-        console.log(results);
-      });
+    handleClick: function() {
+
     },
+
     render: function() {
         return (
         <div>
@@ -38,10 +37,13 @@ var Pawfile = React.createClass({
                                             <li>Gender: {item.sex}</li>
                                             <li>Age: {item.age}</li>
                                         </ul>
-
-                                    {document.cookie.pawfileid === item.id ? (<button className="btn" key={item.id} onClick={this.handleClick(item.id)}>Active</button>)
+                                    {document.cookie.pawfileid === item.id ? (<button className="btn" key={item.id} onClick={() => helper.setCookie(item.id).then(results => {
+                                      console.log("why? "+results);
+                                    })}>Active</button>)
                                     :
-                                    (<button className="btn" key={item.id} onClick={this.handleClick(item.id)}>Set Active</button>)}
+                                    (<button className="btn" key={item.id} onClick={() => helper.setCookie(item.id).then(results => {
+                                      console.log("why? "+results);
+                                    })}>Set Active</button>)}
                                 </div>
                             </div>
                         </div>
