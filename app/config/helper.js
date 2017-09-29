@@ -82,6 +82,13 @@ getShelter: function() {
       return data;
     });
   },
+
+  //retrieves just shelter animal posts
+  getShelterFeed: function() {
+    return axios.get("/api/shelterFeed").then(data => {
+      return data;
+    });
+  },
   //retrieves all posts for one pawfile
   getPawfileFeed: function(pawfileId) {
     return axios.get("/api/userFeed/"+pawfileId).then(data => {

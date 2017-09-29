@@ -227,10 +227,31 @@ app.post("/api/unlikePost/:id", (req,res) =>{
       order: [
         sequelize.literal("id DESC")
       ],
-      limit: 25
+      limit: 50
     }).then(results => {
       res.json(results);
     });
+  });
+
+  //route to get feed exclusively for shelters
+  app.get("/api/shelterFeed", (req, res) => {
+    db.User.findAll({
+      include: [{
+        model: db.Pawfile,
+          include:[{
+            model: db.Post
+        }]
+      }],
+      order: [
+        sequelize.literal("id DESC")
+      ],
+      limit: 50,
+      where: {
+        isShelter: true
+      }
+    }).then(results => {
+      res.json(results);
+    })
   });
 
   //get route intended to get all posts for an individual pawfile
