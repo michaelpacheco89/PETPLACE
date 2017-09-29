@@ -40,7 +40,7 @@ module.exports = function(app) {
       if(err)
       {
         console.log(err);
-        return res.redirect("/")
+        return res.redirect("/");
       }
       //if there is no file stop the function.
       if(!req.file) {
@@ -50,15 +50,43 @@ module.exports = function(app) {
 
       //creates filepath to be saved in database
       var filePath = `${req.file.path}`;
+      var correctFilePath = filePath.replace("public", "");
       console.log(req.cookies.pawfileId);
       //saves filepath to database.
       db.Post.create({
-          picContent: filePath,
+          picContent: correctFilePath,
           PawfileId: req.cookies.pawfileId
       }).then(dbPicture => {
         console.log("added to DB");
         res.json(dbPicture);
       });
+    });
+  });
+
+  //route to add picture to existing text post.
+  app.post("/api/picAndText/:id", (req, res) => {
+    upload(req, res, function(err) {
+      if(err)
+      {
+        console.log(err);
+        return res.redirect("/");
+      }
+
+      if(!req.file) {
+        console.log("No file received");
+        return res.redirect("/");
+      }
+
+      var filePath = `${req.file.path}`;
+      var correctFilePath = filePath.replace("public", "");
+      db.Post.update({
+        picContent: correctFilePath
+      },
+      {
+        where: {
+          id: req.params.id
+        }
+      })
     });
   });
 

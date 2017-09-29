@@ -48,7 +48,11 @@ class makePawfile extends Component
     <div className="col s 12 l8 offset-l2">
         <div className="row">
             <h5> Create a new Pawfile </h5>
-          <form className="col s12">
+          <form className="col s12" encType="multipart/form-data">
+            <div className="file-path-wrapper">
+                <input id="photo" className="file-path validate" type="text" />
+                <label htmlFor="photo"> Add a Photo</label>
+            </div>
             <div className="row">
               <div className="input-field col s12">
                 <input value={this.state.name} onChange={this.handleInputChange} id="name" type="text" className="validate"/>
