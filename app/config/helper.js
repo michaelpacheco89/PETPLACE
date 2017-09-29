@@ -107,6 +107,14 @@ getShelter: function() {
     });
   },
 
+  addPicWithPost: function(id, imageFile) {
+    return axios.post("/api/picAndText/"+id, imageFile, {headers: {
+      'Content-Type': imageFile.type
+    }}).then(data => {
+      console.log("picture data:"+data.data);
+    });
+  },
+
   //route to create text post
   addPost: function(post) {
     return axios.post("/api/sendTextPost", {post: post}).then(data => {
