@@ -139,7 +139,16 @@ getShelter: function() {
       console.log("text post data: "+data);
       return data;
     });
+  },
+
+  addComment: function(comment, postId, id) {
+    console.log('THIS IS ID IN AXIOS', comment, postId, id);
+    return axios.post("/api/createComment/"+postId, {title: comment, PawfileId: id}).then(data => {
+      console.log("POSTING COMMENT TO DB", data);
+      return data;
+    });
   }
+
 }
 
 

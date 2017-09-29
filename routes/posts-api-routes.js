@@ -292,14 +292,15 @@ app.post("/api/unlikePost/:id", (req,res) =>{
   //route to create a comment on a post.
   //req.body.comment should be the text of the commment
   app.post("/api/createComment/:postId",(req, res) => {
+     console.log("REQ.BODY", req.body);
     db.Comments.create({
       // names may need to be changed dependent on comment model.
       //text content
-      title: req.body.comment,
+      title: req.body.title,
       //post that comment belongs to.
       PostId: req.params.postId,
       //creator of comment.
-      PawfileId: req.cookies.pawfileId
+      PawfileId: req.body.PawfileId
     }).then(results => {
       res.json(results);
     });

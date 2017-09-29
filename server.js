@@ -39,7 +39,7 @@ require("./routes/pawfile-api-routes")(app);
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
 
-db.sequelize.sync({}).then(function() {
+db.sequelize.sync().then(function() {
     //{force:true} goes inside sync()
 
         // app.listen(PORT, function() {
