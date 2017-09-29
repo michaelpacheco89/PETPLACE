@@ -37,7 +37,7 @@ class makePawfile extends Component
 
     helper.makePawfile(newPawfile).then(data => {
       console.log(data);
-      window.location.assign("/profile");
+      //window.location.assign("/profile");
       //this doesnt work :(
     });
   }

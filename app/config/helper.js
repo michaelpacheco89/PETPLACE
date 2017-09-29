@@ -20,8 +20,8 @@ const helper = {
   },
 
   getUser: function() {
-    return axios.get("/api/users/").then(data => {
-        console.log("User data: "+data);
+    return axios.get("/api/user/").then(data => {
+        //console.log("User data: "+ data);
         return data;
     });
 },

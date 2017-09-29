@@ -23,10 +23,12 @@ var Main = require("../components/Main.js");
 import Login from "../components/Login";
 import makePawfile from "../components/makePawfile";
 var Profile = require("../components/Profile");
-var Pawfile = require("../components/Pawfile");
 var Shelters = require("../components/Shelters");
 var Mappy = require("../components/Map");
 var Home = require("../components/Home");
+
+
+
 
 var MuiThemeProvider = require("material-ui/styles").MuiThemeProvider;
 // import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -38,9 +40,7 @@ module.exports = (
   <MuiThemeProvider>
   <Router history={hashHistory}>
     <Route path="/" component={Main}>
-        <Route path="/profile" component={Profile}>
-            <Route path="/pawfile" component={Pawfile} />
-        </Route>
+        <Route path="/profile" component={Profile} />
         <Route path="/pawfile/create" component={makePawfile} />
         <Route path="/shelters" component={Shelters} />
         <Route path="/map" component={Mappy} />

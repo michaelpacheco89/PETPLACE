@@ -53,7 +53,7 @@ var NavBar = React.createClass({
                             <Divider />
                         <Link to="/profile"><ListItem primaryText="Profile" leftIcon={<NearMe />} /></Link>
                             <Divider />
-                        <Link to="/map"><ListItem primaryText="Map" leftIcon={<NearMe />} /></Link>
+                        {/* <Link to="/map"><ListItem primaryText="Map" leftIcon={<NearMe />} /></Link> */}
                         <Link to="/" onClick={this.clearCookies}><ListItem primaryText="Log Out" leftIcon={<ContentInbox />} /></Link>
                     </List>
                 </div>

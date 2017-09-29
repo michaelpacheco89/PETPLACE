@@ -20,6 +20,7 @@ var Submit = React.createClass({
 
     handleSubmit: function(event) {
         event.preventDefault();
+
         var picData = new FormData();
         var file = document.getElementById("file").files[0];
         picData.set('photo', file);
@@ -35,14 +36,14 @@ var Submit = React.createClass({
         {
           console.log("make post");
             helper.addPost(this.state.message).then(data => {
-              console.log(data);
+              //console.log(data);
             });
         }
         else if(file)
         {
           console.log(picData.get("photo"));
           helper.addPic(picData).then(data => {
-            console.log(data);
+          //console.log(data);
           });
         }
           // this.setState({photo: new FormData().set('photo', file)});
