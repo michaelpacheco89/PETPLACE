@@ -28,7 +28,6 @@ var Submit = React.createClass({
          {
            helper.addPost(this.state.message).then(results => {
              helper.addPicWithPost(results.data.id, picData).then(res => {
-               console.log("I hope this worked");
              });
            });
          }
