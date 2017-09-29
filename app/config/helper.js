@@ -112,6 +112,17 @@ getShelter: function() {
       'Content-Type': imageFile.type
     }}).then(data => {
       console.log("picture data:"+data.data);
+      return data;
+    });
+  },
+
+  addProfPic: function(id, imageFile) {
+    return axios.post("/api/profPic/"+id, imageFile, {
+      headers: {
+        'Content-Type': imageFile.type
+      }
+    }).then(data => {
+      return data;
     });
   },
 

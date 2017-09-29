@@ -1,4 +1,26 @@
 var db = require("../models");
+const multer = require("multer");
+const crypto = require("crypto");
+const fs = require('fs');
+const path = require("path");
+
+
+var storage = multer.diskStorage({
+  destination: "./public/assets/images",
+  //creates a new filename to be stored in a image folder.
+  filename: function(req, file, cb) {
+    crypto.pseudoRandomBytes(16, (err, raw) => {
+     cb(null, raw.toString('hex') +
+     //preserves the original extension
+     path.extname(file.originalname));
+    });
+  }
+});
+
+//used to upload pics to storage
+var upload = multer({
+  storage: storage
+}).single('photo');
 
 // pawfile take in a name, species, breed, sex, age
 module.exports = function(app) {
@@ -66,6 +88,40 @@ app.post("/api/pawfile/", function(req,res){
     res.json(data);
   });
 });
+
+//route to add profile picture to pawfiles
+app.post("/api/profPic/:id", (req, res) => {
+
+  upload(req, res, function(err) {
+    //if there is an error stop the function.
+    if(err)
+    {
+      console.log(err);
+      return res.redirect("/");
+    }
+    //if there is no file stop the function.
+    if(!req.file) {
+      console.log("No file received");
+      return res.redirect("/");
+    }
+
+    //creates filepath to be saved in database
+    var filePath = `${req.file.path}`;
+    var correctFilePath = filePath.replace("public", "");
+
+    db.Pawfile.update({
+      profPic: correctFilePath
+    },
+    {
+      where: {
+          id: req.params.id
+      }
+    }).then(results => {
+      res.json(results);
+    });
+  });
+});
+
 
 // DELETE route to delete pawfiles
 app.delete("/api/pawfiles/:id",function(data){

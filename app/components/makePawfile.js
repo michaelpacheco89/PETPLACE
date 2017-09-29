@@ -26,6 +26,9 @@ class makePawfile extends Component
 
   handleButtonClick()
   {
+    var picData = new FormData();
+    var file = document.getElementById("file").files[0];
+    picData.set('photo', file);
     let newPawfile = {
       name: this.state.name,
       species: this.state.species,
@@ -35,10 +38,10 @@ class makePawfile extends Component
       //need to add pic here, will figure out tomorrow.
     };
 
-    helper.makePawfile(newPawfile).then(data => {
-      console.log(data);
-      //window.location.assign("/profile");
-      //this doesnt work :(
+    helper.makePawfile(newPawfile).then(results => {
+        helper.addProfPic(results.data.id, picData).then(res => {
+          console.log("this worked?");
+        });
     });
   }
 
@@ -49,10 +52,17 @@ class makePawfile extends Component
         <div className="row">
             <h5> Create a new Pawfile </h5>
           <form className="col s12" encType="multipart/form-data">
-            <div className="file-path-wrapper">
-                <input id="photo" className="file-path validate" type="text" />
-                <label htmlFor="photo"> Add a Photo</label>
-            </div>
+          <div className="file-field input-field">
+              <div className="btn btn-floating">
+                  <span><i className="material-icons">add</i></span>
+                  <input id='file' name="photo" type="file" />
+              </div>
+
+              <div className="file-path-wrapper">
+                  <input id="photo" className="file-path validate" type="text" />
+                  <label htmlFor="photo"> Add a Photo</label>
+              </div>
+          </div>
             <div className="row">
               <div className="input-field col s12">
                 <input value={this.state.name} onChange={this.handleInputChange} id="name" type="text" className="validate"/>
