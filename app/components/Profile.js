@@ -12,10 +12,12 @@ var Profile = React.createClass({
         }
     },
     componentWillMount: function() {
+      
       helper.findUserPawfiles().then(result => {
         this.setState({pawfiles: result.data});
         console.log(this.state.pawfiles);
       });
+
       helper.getUser().then(result => {
         this.setState({user: result.data});
         console.log(this.state.user);

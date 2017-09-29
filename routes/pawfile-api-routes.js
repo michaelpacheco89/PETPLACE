@@ -69,6 +69,7 @@ app.get("/api/setCookie/:id", (req, res) => {
   }).then(data => {
     res.clearCookie("pawfileId");
     res.cookie("pawfileId", data.id);
+    res.end();
   });
 });
 
