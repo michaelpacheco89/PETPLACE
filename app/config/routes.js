@@ -24,7 +24,7 @@ import Login from "../components/Login";
 import makePawfile from "../components/makePawfile";
 var Profile = require("../components/Profile");
 var Shelters = require("../components/Shelters");
-var Mappy = require("../components/Map");
+// var Mappy = require("../components/Map");
 var Home = require("../components/Home");
 
 
@@ -43,7 +43,7 @@ module.exports = (
         <Route path="/profile" component={Profile} />
         <Route path="/pawfile/create" component={makePawfile} />
         <Route path="/shelters" component={Shelters} />
-        <Route path="/map" component={Mappy} />
+        {/* <Route path="/map" component={Mappy} /> */}
         <Route path="/login" component={Login} />
         <IndexRoute component={Home} />
         </Route>

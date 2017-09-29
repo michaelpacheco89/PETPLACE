@@ -1,12 +1,32 @@
 var React = require("react");
+import helper from "../config/helper.js";
 
 var Post = React.createClass({
+
     componentDidMount: function() {
 
     },
 
     componentDidUpdate: function() {
 
+    },
+
+    handleInputChange: function(event){
+      // console.log("HANDLE INPUT CHANGE", event.target.value);
+      this.setState({
+        [event.target.id]: event.target.value
+      });
+    },
+
+
+    handleSubmit: function(e){
+      e.preventDefault();
+      var input = this.state.inputComment;
+      console.log("COMMENT ",input);
+      var id = document.cookie.replace(/(?:(?:^|.*;\s*)pawfileId\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+      console.log("COOKIE", document.cookie);
+      var posty = this.props.data[0].id;
+      helper.addComment(input, posty , id);
     },
 
     likeClick: function(event) {
@@ -52,6 +72,15 @@ var Post = React.createClass({
                              <div className="card-reveal">
                                  <span className="card-title grey-text text-darken-4">Comments<i className="material-icons right">close</i></span>
                                  <p>{item.textContent}</p>
+                                 {/*  */}
+                                 <form className="col s12">
+                                   <input id = "inputComment" type="text" placeholder="Write a Comment" className="validate" onChange={this.handleInputChange} />
+                                   {/* <label htmlFor="inputComment">Enter a Comment </label> */}
+                                   <button className="btn waves-effect waves-light" type="submit" onClick= {this.handleSubmit} name="action">Submit
+                                   <i className="material-icons right">send</i>
+                                   </button>
+                                 </form>
+                                {/*  */}
                              </div>
                          </div>
                      </div>
