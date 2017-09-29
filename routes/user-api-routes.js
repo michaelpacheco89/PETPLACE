@@ -33,18 +33,19 @@ app.get("/api/shelters", function(req, res) {
 });
 
 // API route to find user by id(optional)
-app.get("/api/users/", function(req, res) {
+app.get("/api/user/", function(req, res) {
   //checking to see if username exists for signup
-  var query = {};
+  // var query = {};
   // console.log(req.query.username);
-  if (req.query.username || req.query.email) {
-    query = req.query;
-  } else {
-    query.id = req.cookies.UserId;
-  }
+  // if (req.query.username || req.query.email) {
+    // query = req.query;
+  // } else {
+    // query.id = req.cookies.UserId;
+  // }
   db.User.findOne({
-    where: query && {
-      isShelter:false
+    where: {
+      isShelter:false,
+      id: req.cookies.UserId
     },
     include: [{
       model: db.Pawfile
